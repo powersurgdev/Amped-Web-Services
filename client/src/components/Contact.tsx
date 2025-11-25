@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { insertContactSubmissionSchema, type InsertContactSubmission } from "@shared/schema";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,10 +24,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<InsertContactSubmission>({
     resolver: zodResolver(insertContactSubmissionSchema),
@@ -37,11 +41,27 @@ export default function Contact() {
     },
   });
 
+  const submitMutation = useMutation({
+    mutationFn: async (data: InsertContactSubmission) => {
+      const response = await apiRequest("POST", "/api/contact", data);
+      return response.json();
+    },
+    onSuccess: () => {
+      setIsSubmitted(true);
+      form.reset();
+      setTimeout(() => setIsSubmitted(false), 5000);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Submission failed",
+        description: error.message || "Please try again later.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const onSubmit = (data: InsertContactSubmission) => {
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
-    form.reset();
-    setTimeout(() => setIsSubmitted(false), 5000);
+    submitMutation.mutate(data);
   };
 
   return (
@@ -185,10 +205,17 @@ export default function Contact() {
                   type="submit"
                   size="lg"
                   className="w-full text-base"
-                  disabled={form.formState.isSubmitting}
+                  disabled={submitMutation.isPending}
                   data-testid="button-submit"
                 >
-                  {form.formState.isSubmitting ? "Sending..." : "Send My Project Details"}
+                  {submitMutation.isPending ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send My Project Details"
+                  )}
                 </Button>
 
                 <p className="text-sm text-muted-foreground text-center">
