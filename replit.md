@@ -68,8 +68,8 @@ Preferred communication style: Simple, everyday language.
 
 **Storage Pattern**:
 - Abstracted storage interface (`IStorage`) in `server/storage.ts`
-- In-memory implementation (`MemStorage`) for development/testing
-- Production would use Drizzle-backed PostgreSQL implementation
+- PostgreSQL database with Drizzle ORM (`DatabaseStorage` implementation)
+- Database connection configured in `server/db.ts` using Neon serverless driver
 
 **Migration Strategy**: Drizzle Kit for schema migrations with `npm run db:push`
 
