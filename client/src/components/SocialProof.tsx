@@ -1,0 +1,40 @@
+import { Palette, Zap, Smartphone, Headphones } from "lucide-react";
+import { motion } from "framer-motion";
+
+const highlights = [
+  { icon: Palette, text: "Custom Design" },
+  { icon: Zap, text: "Fast Hosting Included" },
+  { icon: Smartphone, text: "Mobile-First" },
+  { icon: Headphones, text: "Ongoing Support Options" },
+];
+
+export default function SocialProof() {
+  return (
+    <section className="border-y border-border bg-card/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+        >
+          {highlights.map((item, index) => (
+            <motion.div
+              key={item.text}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="flex items-center justify-center gap-3"
+              data-testid={`highlight-${index}`}
+            >
+              <item.icon className="w-5 h-5 text-primary flex-shrink-0" />
+              <span className="text-sm font-medium">{item.text}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
