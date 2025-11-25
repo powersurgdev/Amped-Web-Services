@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import Services from "@/components/Services";
+import Pricing from "@/components/Pricing";
 import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import About from "@/components/About";
@@ -45,6 +46,7 @@ export default function Home() {
       <Hero onNavigate={scrollToSection} />
       <SocialProof />
       <Services />
+      <Pricing onNavigate={scrollToSection} />
       <Portfolio />
       <Process />
       <About />

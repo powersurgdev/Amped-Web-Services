@@ -16,7 +16,7 @@ export default function Header({ onNavigate }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["Services", "Portfolio", "Process", "About", "Contact"];
+  const navItems = ["Services", "Pricing", "Portfolio", "Process", "About", "Contact"];
 
   return (
     <header
