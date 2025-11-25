@@ -12,8 +12,9 @@ const pricingPlans = [
   {
     name: "Starter Website",
     price: "$500",
+    pricePrefix: "Starting at",
     period: "one-time",
-    description: "Everything you need to get your business online with a professional presence.",
+    description: "Everything you need to get your business online. Additional features or custom requirements may increase the cost.",
     features: [
       "Custom-designed landing page",
       "Mobile-responsive design",
@@ -29,6 +30,7 @@ const pricingPlans = [
   {
     name: "Monthly Hosting & Care",
     price: "$25",
+    pricePrefix: "",
     period: "/month",
     description: "Keep your website running smoothly with ongoing support and maintenance.",
     features: [
@@ -95,9 +97,14 @@ export default function Pricing({ onNavigate }: PricingProps) {
                       </div>
                       <h3 className="text-xl font-semibold">{plan.name}</h3>
                     </div>
-                    <div className="flex items-baseline gap-1 pt-2">
-                      <span className="text-4xl font-bold">{plan.price}</span>
-                      <span className="text-muted-foreground">{plan.period}</span>
+                    <div className="pt-2">
+                      {plan.pricePrefix && (
+                        <span className="text-sm text-muted-foreground">{plan.pricePrefix}</span>
+                      )}
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-4xl font-bold">{plan.price}</span>
+                        <span className="text-muted-foreground">{plan.period}</span>
+                      </div>
                     </div>
                     <p className="text-muted-foreground text-sm pt-1">
                       {plan.description}
