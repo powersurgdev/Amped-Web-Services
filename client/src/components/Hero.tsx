@@ -148,7 +148,7 @@ export default function Hero({ onNavigate }: HeroProps) {
 
             <div className="space-y-6">
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-6xl font-bold leading-[1.1] tracking-tight"
                 data-testid="text-hero-headline"
               >
                 <AnimatedText text="Launch a Website" delay={0.3} />
