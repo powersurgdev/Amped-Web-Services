@@ -37,6 +37,7 @@ export default function Footer({ onScrollToTop }: FooterProps) {
               onClick={onScrollToTop}
               data-testid="button-scroll-top"
               className="rounded-full"
+              aria-label="Scroll to top"
             >
               <ArrowUp className="w-4 h-4" />
             </Button>
