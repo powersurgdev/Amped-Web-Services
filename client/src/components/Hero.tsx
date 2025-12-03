@@ -152,8 +152,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 data-testid="text-hero-headline"
               >
                 <AnimatedText text="Launch a Website" delay={0.3} />
-                <br />
-                <span className="text-primary">
+                <span className="text-primary block">
                   <AnimatedText text="That Converts" delay={0.6} />
                 </span>
               </h1>
