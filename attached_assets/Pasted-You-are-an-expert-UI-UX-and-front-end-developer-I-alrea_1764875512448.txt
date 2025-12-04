@@ -1,0 +1,137 @@
+You are an expert UI/UX and front-end developer. I already have a pricing section on my site, but I want you to REPLACE it with a cleaner, higher-converting version using ONLY TWO monthly plans and an add-on services area.
+
+Overall goals:
+
+Keep my current site’s style.
+
+Use sleek pricing cards with subtle hover effects and rounded corners.
+
+Make everything fully responsive and mobile-friendly.
+
+Use strong call-to-action buttons under each plan.
+
+1. Pricing Section Layout
+
+Create a centered section with a heading and subheading, then two main pricing cards side by side on desktop and stacked on mobile.
+
+Section header:
+
+Title: Website Management & SEO Plans
+
+Subtitle: Simple, transparent monthly pricing. No long-term contracts.
+
+2. Plan Cards
+
+Create TWO plans:
+
+Plan 1 – Starter
+
+Label: Starter Website Plan
+
+Price: $50/mo
+
+Small tag (optional): Best for getting online
+
+Short description: Perfect for small businesses that need a clean, professional website and ongoing support.
+
+Features list:
+
+Up to 5 professionally designed pages
+
+Hosting & SSL security included
+
+Mobile-responsive design
+
+Contact form setup
+
+Basic SEO setup
+
+Google Business listing setup
+
+Basic visitor analytics
+
+Ongoing website updates and support
+
+Button: Get Started
+
+Plan 2 – Growth
+
+Visually highlight this card as the “Most Popular” plan (slightly larger, subtle glow or accent border, and a small badge).
+
+Badge at top: Most Popular
+
+Label: Growth Website Plan
+
+Price: $100/mo
+
+Small tag: For businesses ready to grow
+
+Short description: For businesses that want more traffic, more leads, and real data on what’s working.
+
+Features list:
+
+Everything in the Starter Website Plan
+
+Advanced SEO optimization (ongoing improvements to rank higher on Google)
+
+Google Analytics 4 (see how many people visit and where they come from)
+
+Microsoft Clarity (see how visitors interact so we can improve conversions)
+
+Google Search Console (track search performance and fix visibility issues)
+
+Google Business Profile optimization (helps you get more local calls)
+
+Monthly performance review and improvements
+
+Priority support & faster updates
+
+Button: Scale My Website
+
+3. Add-On Services Section
+
+Below the two main plans, create a separate section titled:
+
+Title: Add-On Services
+
+Subtitle: Customize your plan with extra growth tools.
+
+Display these as 3–4 cards in a responsive grid (2 per row on desktop, stacked on mobile). Use same card style as the pricing cards but smaller.
+
+Add-on cards:
+
+Additional Pages
+
+Price: $25 per page
+
+Text: Add extra pages with full design, content, and SEO optimization.
+
+SEO Boost Package
+
+Price: $49/mo
+
+Text: Monthly keyword research, content updates, and ranking improvements.
+
+Blog Posts
+
+Price: $19/post
+
+Text: SEO-optimized blog posts to keep your site fresh and improve search visibility.
+
+Logo / Brand Refresh
+
+Price: $99 one-time
+
+Text: Professional logo refresh with multiple concepts and final files for web and print.
+
+4. Design & UX Notes
+
+Keep the background consistent with the rest of the site .
+
+Use clear headings, enough spacing, and icons if available (optional).
+
+On mobile, stack: section heading → Starter card → Growth card → Add-ons grid.
+
+Make sure buttons have good contrast and look clickable.
+
+Ensure all text is easy to read and not cramped.
