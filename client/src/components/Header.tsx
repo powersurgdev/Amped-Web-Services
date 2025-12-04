@@ -53,9 +53,7 @@ export default function Header({ onNavigate }: HeaderProps) {
             onClick={() => onNavigate("contact")}
             data-testid="button-quote"
             className="hidden md:inline-flex"
-          >
-            Get a Free Quote
-          </Button>
+          >Get Started Today!</Button>
 
           <Button
             onClick={() => onNavigate("contact")}
