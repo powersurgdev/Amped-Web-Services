@@ -1,0 +1,144 @@
+Update the existing “Plans” or “Pricing” section on my website using the package structure below. Keep the overall design clean, modern, and easy to scan. The current plans section only has 2 packages, so replace it with 4 total packages.
+
+Important design goals:
+- Make the section feel professional and conversion-focused
+- Keep pricing very clear
+- Use strong hierarchy for package names, hook lines, pricing, and included items
+- Make each package easy to compare
+- Add a small “Optional Upsells” / “Additional Services” section below the plans
+- Make the layout responsive for desktop and mobile
+- If possible, visually highlight the best middle option in a tasteful way
+- Keep the styling aligned with the rest of the current website
+
+Section title ideas:
+- Website Packages
+- Simple Plans for Getting Your Business Online
+- Choose the Right Package for Your Business
+
+You can choose the best heading/subheading combination based on the current site style.
+
+Use these 4 packages:
+
+1) LAUNCH
+Hook: Get online fast.
+Pricing:
+- $500 one-time build
+- $35/month
+
+Description / intent:
+Perfect for businesses that just need a clean, professional website live without all the extra marketing setup.
+
+Includes:
+- Custom website build
+- Up to 8 pages
+- Mobile-friendly design
+- Domain connection
+- Hosting
+- Basic contact form
+- Standard launch setup
+
+Best for:
+Businesses that just need a professional online presence
+
+2) VISIBILITY
+Hook: Start getting found on Google.
+Pricing:
+- $500 one-time build
+- $100/month
+
+Description / intent:
+Great for businesses that want more than just a website and need the right foundation in place to start building traffic.
+
+Includes everything in Launch, plus:
+- Google Business Profile setup
+- Call tracking setup
+- User behavior tracking
+- Google Analytics setup
+- Google Search Console setup
+- 4 SEO blog posts per month
+
+Best for:
+Businesses that want a website plus foundational visibility tools
+
+3) SCALE
+Hook: Turn your website into a growth engine.
+Pricing:
+- $500 one-time build
+- $250/month
+
+Description / intent:
+Built for businesses that want stronger SEO support and need their website ready to work alongside a marketing company or ad team.
+
+Includes everything in Visibility, plus:
+- 16 SEO blog posts per month
+- More active content publishing
+- Conversion tracking setup
+- Support for third-party marketing teams
+- Ongoing website tweaks related to marketing performance
+- Priority support
+
+Best for:
+Businesses that want to grow traffic and support a larger marketing effort
+
+4) DOMINATE
+Hook: We handle everything. You focus on closing.
+Pricing:
+- $500 one-time build
+- $500/month
+
+Description / intent:
+This is the full-service package for businesses that want website, SEO, tracking, and Google Ads management handled in one place.
+
+Includes everything in Scale, plus:
+- Google Ads account setup
+- Google Ads conversion tracking setup
+- Google Ads campaign management
+- Ongoing ad updates and optimization
+- Landing page tweaks as needed
+- Continuous support for lead generation improvements
+
+Important note:
+- Ad spend is not included
+
+Best for:
+Businesses that want a done-for-you online growth package
+
+Below the package section, add an “Optional Upsells” or “Additional Services” section.
+
+Use these upsells:
+- Logo design — $100–$250
+- Extra pages — $50/page
+- Same-day rush build — +$100
+- Review management — $50/month
+- Local SEO pages — $100/page, 3 for $250, or 5 for $400
+
+For the Local SEO Pages item, add a short expandable description, tooltip, or supporting text that explains what it is in a simple way. Use something like this:
+
+“Local SEO pages are location-specific pages built for cities or service areas you want to rank in on Google. For example: Tree Removal in Wesley Chapel, Tree Removal in Lutz, or Stump Grinding in Land O’ Lakes. These pages help your business show up for searches in nearby areas.”
+
+Content/layout preferences:
+- Each package should show:
+  - package name
+  - one-line hook
+  - one-time build price
+  - monthly price
+  - short description
+  - included items
+  - best-for text
+  - CTA button
+- CTA examples:
+  - Get Started
+  - Book a Call
+  - Choose Plan
+  - Launch My Site
+
+Make the copy feel confident, simple, and not overly corporate. It should sound like a small business-friendly offer that feels easy to understand.
+
+Also:
+- Make sure the pricing wording is consistent across all four plans
+- Keep the bullet points tight and readable
+- Avoid making the section too wordy
+- Improve the current layout if needed so it looks more premium and polished
+- If the current site already has card styling, upgrade it instead of rebuilding the whole site style from scratch
+
+If it helps, you can slightly refine the wording for clarity while preserving the offer structure above.
