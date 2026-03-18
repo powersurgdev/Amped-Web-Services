@@ -288,7 +288,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
           className="mt-20"
         >
           <div className="text-center mb-10 space-y-3">
-            <h3 className="text-2xl sm:text-3xl font-bold">Optional Add-Ons</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold">Optional Upsells</h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Bolt on exactly what you need — nothing more.
             </p>
