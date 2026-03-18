@@ -12,9 +12,9 @@ import vergaImg from "@assets/generated_images/verga_electric_portfolio.png";
 const portfolioItems = [
   {
     image: grandOaksImg,
-    title: "Grand Oaks Property Maintenance",
-    description: "Full-service property maintenance website built for local lead generation",
-    tag: "Property Maintenance",
+    title: "Grand Oaks Tree Service",
+    description: "Professional tree service website built to drive local calls and service requests",
+    tag: "Tree Service",
     url: "https://grandoakspropertymaintenance.com/",
   },
   {
@@ -55,7 +55,7 @@ export default function Portfolio() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {portfolioItems.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -63,13 +63,14 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full"
               >
                 <Card
-                  className="group cursor-pointer overflow-hidden hover-elevate transition-all duration-300 hover:shadow-xl"
+                  className="group cursor-pointer overflow-hidden hover-elevate transition-all duration-300 hover:shadow-xl h-full flex flex-col"
                   onClick={() => setSelectedItem(index)}
                   data-testid={`card-portfolio-${index}`}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden flex-shrink-0">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -80,14 +81,14 @@ export default function Portfolio() {
                       <span className="text-sm font-medium text-primary">View details</span>
                     </div>
                   </div>
-                  <div className="p-6 space-y-3">
+                  <div className="p-6 space-y-3 flex flex-col flex-1">
                     <div className="flex items-start justify-between gap-3 flex-wrap">
                       <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
                       <Badge variant="secondary" className="flex-shrink-0 text-xs">
                         {item.tag}
                       </Badge>
                     </div>
-                    <p className="text-muted-foreground text-sm">{item.description}</p>
+                    <p className="text-muted-foreground text-sm flex-1">{item.description}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -106,12 +107,12 @@ export default function Portfolio() {
           </DialogDescription>
           {selectedItem !== null && (
             <div className="space-y-6 p-6">
-              <div className="aspect-[4/3] rounded-md overflow-hidden">
+              <div className="rounded-md overflow-hidden bg-muted">
                 <img
                   src={portfolioItems[selectedItem].image}
                   alt={portfolioItems[selectedItem].title}
                   loading="lazy"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full object-contain max-h-[60vh]"
                 />
               </div>
               <div className="space-y-4">
