@@ -34,32 +34,34 @@ function FloatingCard({
   children,
   className = "",
   delay = 0,
-  duration = 4
+  duration = 4,
+  amplitude = 12
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   duration?: number;
+  amplitude?: number;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{
-        opacity: 1,
-        y: [0, -10, 0],
-      }}
-      transition={{
-        opacity: { duration: 0.6, delay },
-        y: {
-          duration,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: delay + 0.6,
-        }
-      }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
       className={className}
     >
-      {children}
+      <motion.div
+        animate={{ y: [0, -amplitude] }}
+        transition={{
+          duration,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+          delay: delay + 0.6,
+        }}
+      >
+        {children}
+      </motion.div>
     </motion.div>
   );
 }
@@ -151,9 +153,9 @@ export default function Hero({ onNavigate }: HeroProps) {
                 className="text-4xl sm:text-5xl lg:text-6xl xl:text-6xl font-bold leading-[1.1] tracking-tight"
                 data-testid="text-hero-headline"
               >
-                <AnimatedText text="Launch a Website" delay={0.3} />
+                <AnimatedText text="Websites Built to" delay={0.3} />
                 <span className="text-primary block">
-                  <AnimatedText text="That Converts" delay={0.6} />
+                  <AnimatedText text="Drive Growth" delay={0.6} />
                 </span>
               </h1>
 
@@ -183,8 +185,8 @@ export default function Hero({ onNavigate }: HeroProps) {
                 <span className="relative z-10 flex items-center gap-2">
                   Start Your Project
                   <motion.span
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    animate={{ x: [0, 4] }}
+                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
                   >
                     →
                   </motion.span>
@@ -236,6 +238,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               className="absolute top-8 left-0 w-[380px] bg-card border border-border rounded-xl shadow-2xl overflow-hidden"
               delay={0.4}
               duration={5}
+              amplitude={10}
             >
               <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border">
                 <div className="flex gap-1.5">
@@ -277,6 +280,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               className="absolute top-32 right-0 w-[220px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={0.6}
               duration={4}
+              amplitude={8}
             >
               <div className="flex items-center gap-2 mb-3">
                 <BarChart3 className="w-4 h-4 text-primary" />
@@ -319,6 +323,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               className="absolute bottom-24 left-8 w-[200px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={0.8}
               duration={6}
+              amplitude={14}
             >
               <div className="flex items-center gap-2 mb-3">
                 <Server className="w-4 h-4 text-chart-4" />
@@ -341,6 +346,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               className="absolute bottom-8 right-12 w-[180px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={1}
               duration={5}
+              amplitude={6}
             >
               <div className="flex items-center gap-2 mb-3">
                 <Monitor className="w-4 h-4 text-chart-3" />
