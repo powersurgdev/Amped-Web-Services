@@ -7,7 +7,7 @@ export default function Logo({ className = "" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid meet"
       className={className}
-      aria-label="Sergios Designs"
+      aria-label="Amped Web Studios"
     >
       <svg x="446" y="245" width="630" height="64" preserveAspectRatio="none">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" style={{display:"block"}} width="630" height="64" viewBox="856.73 82.98 1296.77 130.48" preserveAspectRatio="none">
