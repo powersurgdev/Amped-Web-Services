@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import Logo from "@/components/Logo";
+import logoSrc from "@assets/Amped-Web-Studios-Logo-(Copy)_(1)_1774025378166.png";
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
@@ -33,9 +33,13 @@ export default function Header({ onNavigate }: HeaderProps) {
             onClick={() => onNavigate("hero")}
             className="hover-elevate active-elevate-2 rounded-md transition-colors flex items-center"
             data-testid="link-home"
-            aria-label="Sergios Designs - Home"
+            aria-label="Amped Web Studios - Home"
           >
-            <Logo />
+            <img
+              src={logoSrc}
+              alt="Amped Web Studios"
+              className="h-10 w-auto"
+            />
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
