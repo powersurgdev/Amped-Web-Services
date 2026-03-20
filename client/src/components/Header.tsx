@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
@@ -30,10 +31,11 @@ export default function Header({ onNavigate }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           <button
             onClick={() => onNavigate("hero")}
-            className="text-xl font-bold hover-elevate active-elevate-2 px-2 py-1 rounded-md transition-colors"
+            className="hover-elevate active-elevate-2 rounded-md transition-colors flex items-center"
             data-testid="link-home"
+            aria-label="Sergios Designs - Home"
           >
-            Sergios Designs
+            <Logo />
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
