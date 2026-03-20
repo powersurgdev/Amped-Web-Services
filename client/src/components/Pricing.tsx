@@ -214,7 +214,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
                   </div>
                 )}
 
-                <CardContent className="p-7 flex flex-col gap-5 flex-1">
+                <CardContent className={`p-7 flex flex-col gap-5 flex-1 ${plan.popular ? "pt-7 mt-3" : ""}`}>
                   {/* Plan header */}
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">

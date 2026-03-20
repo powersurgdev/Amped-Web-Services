@@ -98,7 +98,7 @@ export default function Portfolio() {
       </section>
 
       <Dialog open={selectedItem !== null} onOpenChange={() => setSelectedItem(null)}>
-        <DialogContent className="max-w-4xl p-0">
+        <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] p-0">
           <DialogTitle className="sr-only">
             {selectedItem !== null ? portfolioItems[selectedItem].title : "Portfolio item"}
           </DialogTitle>
@@ -125,7 +125,7 @@ export default function Portfolio() {
                 </p>
                 <Button
                   asChild
-                  className="gap-2"
+                  className="w-full gap-2"
                   data-testid={`button-visit-site-${selectedItem}`}
                 >
                   <a

@@ -191,7 +191,7 @@ export default function Contact() {
                       <FormControl>
                         <Textarea
                           placeholder="Tell me about your business, your goals, and what you need help with."
-                          rows={6}
+                          rows={4}
                           {...field}
                           data-testid="textarea-message"
                         />

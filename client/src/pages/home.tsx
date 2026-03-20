@@ -40,6 +40,13 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      setTimeout(() => scrollToSection(hash), 100);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       <a
@@ -60,7 +67,7 @@ export default function Home() {
         <CTAStrip onNavigate={scrollToSection} />
         <Contact />
       </main>
-      <Footer onScrollToTop={scrollToTop} />
+      <Footer onScrollToTop={scrollToTop} onNavigate={scrollToSection} />
     </div>
   );
 }

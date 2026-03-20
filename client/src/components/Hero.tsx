@@ -88,7 +88,7 @@ export default function Hero({ onNavigate }: HeroProps) {
       <div className="absolute inset-0 -z-20">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/10" />
         <motion.div
-          className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-primary/20 blur-[120px]"
+          className="absolute top-1/4 -left-1/4 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full bg-primary/10 sm:bg-primary/20 blur-[60px] sm:blur-[100px] lg:blur-[120px]"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -101,7 +101,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           }}
         />
         <motion.div
-          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-chart-2/15 blur-[100px]"
+          className="absolute bottom-0 right-0 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-chart-2/15 blur-[50px] sm:blur-[80px] lg:blur-[100px]"
           animate={{
             x: [0, -40, 0],
             y: [0, -40, 0],
@@ -172,13 +172,13 @@ export default function Hero({ onNavigate }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-4"
             >
               <Button
                 size="lg"
                 onClick={() => onNavigate("contact")}
                 data-testid="button-start-project"
-                className="text-base group relative overflow-visible"
+                className="text-base group relative overflow-visible w-full sm:w-auto"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Start Your Project
@@ -195,7 +195,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 variant="outline"
                 onClick={() => onNavigate("portfolio")}
                 data-testid="button-view-portfolio"
-                className="text-base backdrop-blur-sm"
+                className="text-base backdrop-blur-sm w-full sm:w-auto"
               >
                 View Portfolio
               </Button>
@@ -206,7 +206,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-wrap gap-8 pt-4"
+              className="grid grid-cols-3 sm:flex gap-6 sm:gap-8 pt-4"
             >
               <div>
                 <div className="text-3xl font-bold text-primary">

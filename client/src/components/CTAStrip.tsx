@@ -7,7 +7,7 @@ interface CTAStripProps {
 
 export default function CTAStrip({ onNavigate }: CTAStripProps) {
   return (
-    <section className="py-20 sm:py-24 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+    <section className="py-14 sm:py-24 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -25,7 +25,7 @@ export default function CTAStrip({ onNavigate }: CTAStripProps) {
           size="lg"
           onClick={() => onNavigate("contact")}
           data-testid="button-cta-quote"
-          className="text-base"
+          className="text-base w-full sm:w-auto"
         >
           Get a Free Quote
         </Button>

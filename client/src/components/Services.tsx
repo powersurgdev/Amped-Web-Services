@@ -67,7 +67,7 @@ export default function Services() {
                 className="h-full hover-elevate transition-all duration-300 hover:shadow-lg"
                 data-testid={`card-service-${index}`}
               >
-                <CardContent className="p-6 space-y-4">
+                <CardContent className="p-4 sm:p-6 space-y-4">
                   <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center">
                     <service.icon className="w-6 h-6 text-primary" />
                   </div>

@@ -55,7 +55,7 @@ export default function Process() {
               className="relative"
             >
               <Card className="hover-elevate transition-all duration-300">
-                <CardContent className="p-6 space-y-4">
+                <CardContent className="p-4 sm:p-6 space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold flex-shrink-0">
                       {step.number}
