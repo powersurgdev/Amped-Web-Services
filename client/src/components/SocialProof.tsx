@@ -2,10 +2,10 @@ import { Palette, Zap, Smartphone, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
 
 const highlights = [
-  { icon: Palette, text: "Custom Design" },
-  { icon: Zap, text: "Fast Hosting Included" },
-  { icon: Smartphone, text: "Mobile-First" },
-  { icon: Headphones, text: "Ongoing Support Options" },
+  { icon: Palette, text: "Custom-Built for Your Brand" },
+  { icon: Zap, text: "Lightning-Fast Hosting Included" },
+  { icon: Smartphone, text: "Mobile-First & SEO-Ready" },
+  { icon: Headphones, text: "Ongoing Support & Growth Plans" },
 ];
 
 export default function SocialProof() {

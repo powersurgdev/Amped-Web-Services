@@ -7,19 +7,19 @@ const steps = [
     number: "1",
     icon: Search,
     title: "Discover",
-    description: "We define your goals, content, and what success looks like.",
+    description: "We start with a conversation to understand your business, your customers, and what you want your site to do. You'll leave with a clear plan and no unanswered questions.",
   },
   {
     number: "2",
     icon: Layers,
     title: "Design & Build",
-    description: "You review polished design concepts while I handle the build and hosting setup.",
+    description: "We create a custom design based on your brand, walk you through it for feedback, then build it out with clean code, fast performance, and hosting fully configured.",
   },
   {
     number: "3",
     icon: Rocket,
     title: "Launch & Support",
-    description: "We go live, then I stick around with care plans and optimizations if you need them.",
+    description: "Your site goes live when you're ready. Our care plans keep everything running — updates, backups, security, and ongoing improvements included.",
   },
 ];
 
@@ -37,6 +37,9 @@ export default function Process() {
           <h2 className="text-3xl sm:text-4xl font-bold" data-testid="text-process-title">
             How It Works
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Three clear steps from idea to live — no confusion, no surprises.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
@@ -80,7 +83,7 @@ export default function Process() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center text-muted-foreground mt-12"
         >
-          Most projects move from first call to launch in just a few weeks.
+          Most sites go from kickoff call to live launch in 2–3 weeks. We move fast — without cutting corners.
         </motion.p>
       </div>
     </section>

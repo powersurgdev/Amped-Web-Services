@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import logoSrc from "@assets/Amped-Web-Studios-Logo-(Copy)-(Copy)_(1)_1774025394664.png";
+import logoSrc from "@assets/Amped-Web-Studios-Logo-(Copy)_(1)_1774025378166.png";
 
 interface HeaderProps {
   onNavigate: (section: string) => void;

@@ -1,27 +1,37 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Palette, Code, Server, TrendingUp } from "lucide-react";
+import { Palette, Code, Server, TrendingUp, Search, Megaphone } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
   {
     icon: Palette,
     title: "Custom Website Design",
-    description: "Bespoke designs tailored to your brand, optimized for conversion and mobile.",
+    description: "No templates, no shortcuts. Every site is designed from scratch around your brand, your audience, and your goals.",
   },
   {
     icon: Code,
     title: "Development & Launch",
-    description: "Clean, responsive builds with fast load times and modern best practices.",
+    description: "Hand-coded, fast-loading, and built to perform. We handle everything from domain setup to go-live.",
   },
   {
     icon: Server,
     title: "Hosting & Care Plans",
-    description: "Managed hosting, backups, and updates so you never worry about downtime.",
+    description: "We manage your hosting, updates, backups, and security — so your site is always live, fast, and protected.",
+  },
+  {
+    icon: Search,
+    title: "SEO & Local Search",
+    description: "We optimize your site to rank in local search results, so nearby customers find you before they find your competition.",
   },
   {
     icon: TrendingUp,
     title: "Optimization & Refresh",
-    description: "Need a revamp? I optimize existing sites for design, speed, and UX.",
+    description: "Got a site that's falling behind? We redesign, rebuild, and optimize for speed, conversions, and modern UX.",
+  },
+  {
+    icon: Megaphone,
+    title: "Digital Marketing & Growth",
+    description: "Review management, local SEO pages, and targeted content — we help you grow well beyond just a website.",
   },
 ];
 
@@ -37,14 +47,14 @@ export default function Services() {
           className="text-center mb-12 sm:mb-16 space-y-4"
         >
           <h2 className="text-3xl sm:text-4xl font-bold" data-testid="text-services-title">
-            Services
+            What We Do
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to get online and stay online — in one place.
+            From first impression to long-term growth — we handle the web so you can run the business.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}

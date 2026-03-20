@@ -3,9 +3,9 @@ import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const highlights = [
-  "Responsive, mobile-first builds",
-  "Clear communication and quick turnarounds",
-  "Flexible hosting and support options",
+  "Responsive, mobile-first builds that load fast on every device",
+  "Transparent communication and fast turnarounds — no ghosting, no delays",
+  "All-in-one: design, development, SEO, hosting, and growth services",
 ];
 
 export default function About() {
@@ -21,10 +21,10 @@ export default function About() {
             className="space-y-6"
           >
             <h2 className="text-3xl sm:text-4xl font-bold" data-testid="text-about-title">
-              About Sergios Designs
+              About Amped Web Studios
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Sergio, a web designer and developer based in Florida, focused on building clean, conversion-driven websites for small businesses and growing brands. I handle design, development, and hosting, so you have one partner for your entire web presence.
+              We're Amped Web Studios — a Florida-based web design and digital agency built for small businesses that want to compete online. We design, develop, and manage everything, so you're not juggling multiple vendors or wondering what's happening with your site. One team. One point of contact. Results you can actually measure.
             </p>
             <ul className="space-y-3">
               {highlights.map((item, index) => (

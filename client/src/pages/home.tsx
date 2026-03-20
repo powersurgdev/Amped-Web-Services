@@ -52,9 +52,9 @@ export default function Home() {
       <main id="main-content">
         <Hero onNavigate={scrollToSection} />
         <SocialProof />
-        <Services />
-        <Pricing onNavigate={scrollToSection} />
         <Portfolio />
+        <Pricing onNavigate={scrollToSection} />
+        <Services />
         <Process />
         <About />
         <CTAStrip onNavigate={scrollToSection} />

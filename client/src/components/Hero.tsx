@@ -30,13 +30,13 @@ function AnimatedText({ text, delay = 0 }: { text: string; delay?: number }) {
   );
 }
 
-function FloatingCard({ 
-  children, 
+function FloatingCard({
+  children,
   className = "",
   delay = 0,
   duration = 4
-}: { 
-  children: React.ReactNode; 
+}: {
+  children: React.ReactNode;
   className?: string;
   delay?: number;
   duration?: number;
@@ -44,8 +44,8 @@ function FloatingCard({
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ 
-        opacity: 1, 
+      animate={{
+        opacity: 1,
         y: [0, -10, 0],
       }}
       transition={{
@@ -116,8 +116,8 @@ export default function Hero({ onNavigate }: HeroProps) {
       </div>
 
       {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 -z-10 opacity-[0.015]"
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.04]"
         style={{
           backgroundImage: `
             linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
@@ -142,7 +142,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 data-testid="badge-services"
               >
                 <Sparkles className="w-3.5 h-3.5 mr-2 text-primary" />
-                Website Design • Hosting • Care Plans
+                Web Design • SEO • Hosting • Digital Marketing
               </Badge>
             </motion.div>
 
@@ -164,7 +164,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl"
                 data-testid="text-hero-subheadline"
               >
-                I design and build lightning-fast websites with hosting included—so you can focus on your business while your site does the selling.
+                We design, build, and grow high-performance websites for small businesses — with hosting, SEO, and support all under one roof.
               </motion.p>
             </div>
 
@@ -232,7 +232,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           {/* Right side - Floating cards composition */}
           <div className="relative h-[500px] sm:h-[600px] hidden lg:block">
             {/* Main browser mockup */}
-            <FloatingCard 
+            <FloatingCard
               className="absolute top-8 left-0 w-[380px] bg-card border border-border rounded-xl shadow-2xl overflow-hidden"
               delay={0.4}
               duration={5}
@@ -273,7 +273,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             </FloatingCard>
 
             {/* Analytics card */}
-            <FloatingCard 
+            <FloatingCard
               className="absolute top-32 right-0 w-[220px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={0.6}
               duration={4}
@@ -289,7 +289,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     <span className="text-primary font-medium">98/100</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-primary rounded-full"
                       initial={{ width: 0 }}
                       animate={{ width: "98%" }}
@@ -303,7 +303,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     <span className="text-chart-4 font-medium">95/100</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-chart-4 rounded-full"
                       initial={{ width: 0 }}
                       animate={{ width: "95%" }}
@@ -315,7 +315,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             </FloatingCard>
 
             {/* Server status card */}
-            <FloatingCard 
+            <FloatingCard
               className="absolute bottom-24 left-8 w-[200px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={0.8}
               duration={6}
@@ -325,7 +325,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 <span className="text-sm font-medium">Hosting</span>
               </div>
               <div className="flex items-center gap-2">
-                <motion.div 
+                <motion.div
                   className="w-2.5 h-2.5 rounded-full bg-chart-4"
                   animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -337,7 +337,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             </FloatingCard>
 
             {/* Devices card */}
-            <FloatingCard 
+            <FloatingCard
               className="absolute bottom-8 right-12 w-[180px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={1}
               duration={5}

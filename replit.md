@@ -1,8 +1,8 @@
-# Sergios Designs - Landing Page
+# Amped Web Studios - Landing Page
 
 ## Overview
 
-This is a one-page landing website for "Sergios Designs," a web design and hosting service. The application is built as a modern, conversion-focused marketing site with a tech-forward aesthetic inspired by Stripe's design language. The site features smooth scrolling, animations, and a contact form for lead generation.
+This is a one-page landing website for "Amped Web Studios," a Florida-based web design, SEO, hosting, and digital marketing agency. The application is built as a modern, conversion-focused marketing site with a tech-forward aesthetic inspired by Stripe's design language. The site features smooth scrolling, animations, and a contact form for lead generation.
 
 The tech stack consists of a React frontend with TypeScript, Express.js backend, and uses shadcn/ui components with Tailwind CSS for styling. The application includes a contact form submission system that stores leads.
 
