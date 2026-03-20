@@ -35,7 +35,7 @@ function FloatingCard({
   className = "",
   delay = 0,
   duration = 4,
-  amplitude = 12
+  amplitude = 10
 }: {
   children: React.ReactNode;
   className?: string;
@@ -47,18 +47,19 @@ function FloatingCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
+      transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       <motion.div
-        animate={{ y: [0, -amplitude] }}
+        animate={{ y: [0, -amplitude, 0] }}
         transition={{
           duration,
           repeat: Infinity,
-          repeatType: "mirror",
-          ease: "easeInOut",
-          delay: delay + 0.6,
+          ease: [0.37, 0, 0.63, 1],
+          delay: delay + 0.8,
+          times: [0, 0.5, 1],
         }}
+        style={{ willChange: "transform" }}
       >
         {children}
       </motion.div>
@@ -237,8 +238,8 @@ export default function Hero({ onNavigate }: HeroProps) {
             <FloatingCard
               className="absolute top-8 left-0 w-[380px] bg-card border border-border rounded-xl shadow-2xl overflow-hidden"
               delay={0.4}
-              duration={5}
-              amplitude={10}
+              duration={6}
+              amplitude={8}
             >
               <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border">
                 <div className="flex gap-1.5">
@@ -279,8 +280,8 @@ export default function Hero({ onNavigate }: HeroProps) {
             <FloatingCard
               className="absolute top-32 right-0 w-[220px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={0.6}
-              duration={4}
-              amplitude={8}
+              duration={7}
+              amplitude={9}
             >
               <div className="flex items-center gap-2 mb-3">
                 <BarChart3 className="w-4 h-4 text-primary" />
@@ -322,8 +323,8 @@ export default function Hero({ onNavigate }: HeroProps) {
             <FloatingCard
               className="absolute bottom-24 left-8 w-[200px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={0.8}
-              duration={6}
-              amplitude={14}
+              duration={8}
+              amplitude={10}
             >
               <div className="flex items-center gap-2 mb-3">
                 <Server className="w-4 h-4 text-chart-4" />
@@ -345,8 +346,8 @@ export default function Hero({ onNavigate }: HeroProps) {
             <FloatingCard
               className="absolute bottom-8 right-12 w-[180px] bg-card border border-border rounded-xl shadow-xl p-4"
               delay={1}
-              duration={5}
-              amplitude={6}
+              duration={6.5}
+              amplitude={8}
             >
               <div className="flex items-center gap-2 mb-3">
                 <Monitor className="w-4 h-4 text-chart-3" />
