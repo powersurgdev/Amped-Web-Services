@@ -1,0 +1,132 @@
+import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Palette, Code, Server, Search, TrendingUp, Megaphone, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+const services = [
+  {
+    icon: Palette,
+    title: "Custom Website Design",
+    description: "No templates, no shortcuts. Every site is designed from scratch around your brand, your audience, and your goals.",
+    href: "/services/web-design",
+  },
+  {
+    icon: Code,
+    title: "Development & Launch",
+    description: "Hand-coded, fast-loading, and built to perform. We handle everything from domain setup to go-live.",
+    href: "/services/web-development",
+  },
+  {
+    icon: Server,
+    title: "Hosting & Care Plans",
+    description: "We manage your hosting, updates, backups, and security — so your site is always live, fast, and protected.",
+    href: "/services/hosting-care",
+  },
+  {
+    icon: Search,
+    title: "SEO & Local Search",
+    description: "We optimize your site to rank in local search results, so nearby customers find you before they find your competition.",
+    href: "/services/seo-local-search",
+  },
+  {
+    icon: TrendingUp,
+    title: "Website Optimization & Refresh",
+    description: "Got a site that's falling behind? We redesign, rebuild, and optimize for speed, conversions, and modern UX.",
+    href: "/services/website-refresh",
+  },
+  {
+    icon: Megaphone,
+    title: "Digital Marketing & Growth",
+    description: "Review management, local SEO pages, and targeted content — we help you grow well beyond just a website.",
+    href: "/services/digital-marketing",
+  },
+];
+
+export default function ServicesHub() {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  return (
+    <div className="min-h-screen">
+      <Helmet>
+        <title>Services — Amped Web Studios</title>
+        <meta
+          name="description"
+          content="From custom web design to SEO and digital marketing — see everything Amped Web Studios offers for small businesses."
+        />
+      </Helmet>
+
+      <Header />
+
+      <main>
+        {/* Hero */}
+        <section className="pt-32 pb-12 sm:pt-40 sm:pb-16 text-center">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+            <h1 className="text-4xl sm:text-5xl font-bold">Everything You Need to Compete Online</h1>
+            <p className="text-lg sm:text-xl text-muted-foreground">
+              We handle the web so you can run the business. From the first design concept to ongoing growth — here's what we do.
+            </p>
+            <Link href="/contact">
+              <Button size="lg">Get a Free Quote</Button>
+            </Link>
+          </div>
+        </section>
+
+        {/* Services grid */}
+        <section className="pb-20 sm:pb-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                >
+                  <Link href={service.href} className="block h-full">
+                    <Card className="h-full hover-elevate transition-all duration-300 hover:shadow-lg group cursor-pointer">
+                      <CardContent className="p-6 space-y-4 flex flex-col h-full">
+                        <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center">
+                          <service.icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <h2 className="text-xl font-semibold">{service.title}</h2>
+                        <p className="text-muted-foreground leading-relaxed flex-1">{service.description}</p>
+                        <div className="flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                          Learn More <ArrowRight className="w-4 h-4" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 sm:py-24 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Not Sure Which Service You Need?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Just tell us where you're at and what you're trying to achieve. We'll figure out the right fit together.
+            </p>
+            <Link href="/contact">
+              <Button size="lg" className="text-base">Talk to Us</Button>
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

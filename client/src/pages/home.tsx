@@ -55,7 +55,7 @@ export default function Home() {
       >
         Skip to main content
       </a>
-      <Header onNavigate={scrollToSection} />
+      <Header />
       <main id="main-content">
         <Hero onNavigate={scrollToSection} />
         <SocialProof />
@@ -67,7 +67,7 @@ export default function Home() {
         <CTAStrip onNavigate={scrollToSection} />
         <Contact />
       </main>
-      <Footer onScrollToTop={scrollToTop} onNavigate={scrollToSection} />
+      <Footer />
     </div>
   );
 }

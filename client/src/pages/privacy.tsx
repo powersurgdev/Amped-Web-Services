@@ -2,20 +2,14 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-function navigateHome(section: string) {
-  window.location.href = section === "hero" ? "/" : `/#${section}`;
-}
-
 export default function Privacy() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
   return (
     <div className="min-h-screen">
-      <Header onNavigate={navigateHome} />
+      <Header />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="space-y-8">
           <div>
@@ -76,7 +70,7 @@ export default function Privacy() {
           </Section>
         </div>
       </main>
-      <Footer onScrollToTop={scrollToTop} onNavigate={navigateHome} />
+      <Footer />
     </div>
   );
 }
