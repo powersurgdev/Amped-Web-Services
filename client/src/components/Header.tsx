@@ -38,7 +38,7 @@ export default function Header({ onNavigate }: HeaderProps) {
             <img
               src={logoSrc}
               alt="Amped Web Studios"
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </button>
 
