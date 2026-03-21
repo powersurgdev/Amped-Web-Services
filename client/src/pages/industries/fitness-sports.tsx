@@ -1,158 +1,124 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Pricing from "@/components/Pricing";
-import IndustryPageHero from "@/components/IndustryPageHero";
+import { Dumbbell, CalendarCheck, User, Trophy, FileText, Search } from "lucide-react";
+import IndustryPageTemplate, { type IndustryPageData } from "@/components/IndustryPageTemplate";
 
-const features = [
-  "Membership and class offerings presented clearly with pricing",
-  "Online class schedule and booking integration",
-  "Trainer and coach bios that showcase expertise and personality",
-  "Transformation stories and member results (where permitted)",
-  "Trial offer and free class lead capture forms",
-  "Local SEO to rank for gym and fitness searches in your area",
-];
+const data: IndustryPageData = {
+  pageTitle: "Gym and Fitness Websites That Convert Visitors to Members — Amped Web Studios",
+  metaDescription:
+    "We build websites for gyms, personal trainers, yoga studios, and fitness businesses — designed to generate trial sign-ups and turn visitors into paying members.",
 
-const faqs = [
-  {
-    q: "How do I compete with big-box gyms online?",
-    a: "Local SEO and authenticity. A well-optimized independent gym page with real member reviews and a strong community feel consistently beats generic chain listings in local searches.",
+  heroProps: {
+    industry: "Fitness & Sports",
+    headline: "Gym and Fitness Websites That Convert Visitors to Members",
+    highlightedPhrase: "Convert Visitors to Members",
+    subheading:
+      "People are ready to change. Your website just needs to give them the right push. We build fitness sites that turn curiosity into commitments.",
+    primaryCTA: "Get a Free Quote",
+    stats: [
+      { value: "Trial", label: "Sign-Up Lead Forms" },
+      { value: "Class", label: "Schedule Integration" },
+      { value: "More", label: "Members from Search" },
+    ],
+    painPoints: [
+      "Trial offers are buried — visitors leave without signing up",
+      "Class schedule isn't online or easy to navigate",
+      "Big-box gym chains outrank you in local search",
+      "Prices are hidden, causing unnecessary friction",
+    ],
   },
-  {
-    q: "Can people sign up for a trial online?",
-    a: "Yes. We build lead capture forms tied to free trial or introductory offer CTAs — one of the most effective ways to get new members through the door.",
-  },
-  {
-    q: "Should I list my membership prices on the website?",
-    a: "For most fitness businesses, yes. Hiding pricing creates friction. Being transparent builds trust and pre-qualifies leads so you spend less time on conversations that go nowhere.",
-  },
-  {
-    q: "What type of content works best for fitness websites?",
-    a: "Real transformation stories, trainer spotlights, class descriptions that convey energy and community, and a clear schedule. We help you structure all of it for maximum impact.",
-  },
-];
 
-function navigateSection(section: string) {
-  if (section === "contact") {
-    window.location.href = "/contact";
-  } else {
-    window.location.href = `/#${section}`;
-  }
-}
+  whySection: {
+    headline: "The First Workout Is the Hardest — Help People Take the Step",
+    paragraphs: [
+      "Someone thinking about joining a gym or starting personal training is often nervous, unsure, and easy to talk themselves out of it. Your website has to overcome that hesitation — with real results, a clear sense of your community, and a path to getting started that feels low-risk.",
+      "A cold, generic, hard-to-navigate fitness site loses people before they ever walk in. Hidden pricing creates friction. No trial offer means no easy first step. No online schedule means they can't picture themselves fitting your classes into their life.",
+      "We build fitness websites that capture the energy of what you do and make it as easy as possible for the right people to say yes — to the free trial, the intro class, or the first consultation.",
+    ],
+    challenges: [
+      {
+        icon: FileText,
+        title: "Buried Trial Offers",
+        body: "If your free trial or intro offer isn't immediately visible, hesitant prospects leave without converting. It's the single highest-impact element on most fitness sites.",
+      },
+      {
+        icon: CalendarCheck,
+        title: "No Online Schedule",
+        body: "Prospects need to picture themselves in your classes before they commit. A clear, browsable schedule makes that possible. No schedule = no mental buy-in.",
+      },
+      {
+        icon: Dumbbell,
+        title: "Losing to Big-Box Gyms",
+        body: "Chain gyms have national SEO budgets. But a well-optimized local page with real reviews and community feel consistently outperforms them in neighborhood searches.",
+      },
+    ],
+  },
+
+  features: [
+    {
+      icon: Dumbbell,
+      title: "Membership & Class Offerings",
+      description:
+        "Clear, well-organized membership tiers and class descriptions with pricing — so prospects can evaluate their options without having to call and ask.",
+    },
+    {
+      icon: CalendarCheck,
+      title: "Online Class Schedule & Booking",
+      description:
+        "An integrated class schedule and booking system that lets prospects browse your offerings and reserve a spot — the step that often comes right before joining.",
+    },
+    {
+      icon: User,
+      title: "Trainer & Coach Profiles",
+      description:
+        "Individual trainer bios with photos, specialties, and certifications — letting prospects find the coach they connect with before they ever walk through the door.",
+    },
+    {
+      icon: Trophy,
+      title: "Member Transformations & Results",
+      description:
+        "Real member stories and transformation results that inspire hesitant prospects — the emotional proof that this gym works for people like them.",
+    },
+    {
+      icon: FileText,
+      title: "Trial & Free Class Lead Forms",
+      description:
+        "Prominently placed trial sign-up forms tied to a free class or intro offer — the lowest-friction path from curious visitor to foot in the door.",
+    },
+    {
+      icon: Search,
+      title: "Local Gym SEO",
+      description:
+        "Optimized to rank for 'gym near me,' '[neighborhood] fitness studio,' and trainer-specific searches — putting you in front of the most motivated local prospects.",
+    },
+  ],
+
+  faqs: [
+    {
+      q: "How do I compete with big-box gyms online?",
+      a: "Local SEO and authenticity. A well-optimized independent gym page with real member reviews and a strong community feel consistently beats generic chain listings in local searches.",
+    },
+    {
+      q: "Can people sign up for a trial online?",
+      a: "Yes. We build lead capture forms tied to free trial or introductory offer CTAs — one of the most effective ways to get new members through the door.",
+    },
+    {
+      q: "Should I list my membership prices on the website?",
+      a: "For most fitness businesses, yes. Hiding pricing creates friction. Being transparent builds trust and pre-qualifies leads so you spend less time on conversations that go nowhere.",
+    },
+    {
+      q: "What type of content works best for fitness websites?",
+      a: "Real transformation stories, trainer spotlights, class descriptions that convey energy and community, and a clear schedule. We help you structure all of it for maximum impact.",
+    },
+  ],
+
+  ctaHeadline: "Let's Build a Site That Grows Your Membership",
+  ctaBody:
+    "Tell us about your gym or studio. We'll put together a plan that fits your goals.",
+};
 
 export default function FitnessSportsPage() {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
-
-  return (
-    <div className="min-h-screen">
-      <Helmet>
-        <title>Gym and Fitness Websites That Convert Visitors to Members — Amped Web Studios</title>
-        <meta
-          name="description"
-          content="We build websites for gyms, personal trainers, yoga studios, and fitness businesses — designed to generate trial sign-ups and turn visitors into paying members."
-        />
-      </Helmet>
-
-      <Header />
-
-      <main>
-        {/* Hero */}
-        <IndustryPageHero
-          industry="Fitness & Sports"
-          headline="Gym and Fitness Websites That Convert Visitors to Members"
-          highlightedPhrase="Convert Visitors to Members"
-          subheading="People are ready to change. Your website just needs to give them the right push. We build fitness sites that turn curiosity into commitments."
-          primaryCTA="Get a Free Quote"
-          onPrimaryClick={() => { window.location.href = "/contact"; }}
-          stats={[
-            { value: "Trial", label: "Sign-Up Lead Forms" },
-            { value: "Class", label: "Schedule Integration" },
-            { value: "More", label: "Members from Search" },
-          ]}
-          painPoints={[
-            "Trial offers are buried — visitors leave without signing up",
-            "Class schedule isn't online or easy to navigate",
-            "Big-box gym chains outrank you in local search",
-            "Prices are hidden, causing unnecessary friction",
-          ]}
-        />
-
-        {/* Why it matters */}
-        <section className="py-14 sm:py-20 bg-card/30">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <h2 className="text-3xl font-bold">The First Workout Is the Hardest — Help People Take the Step</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Someone thinking about joining a gym or starting personal training is often nervous, unsure, and easy to talk themselves out of it. Your website has to overcome that hesitation — with real results, clear expectations, and a warm, inviting tone.
-              </p>
-              <p>
-                A cold, generic, hard-to-navigate fitness site loses people before they ever walk in. A site that shows your community, your coaches, your results, and makes signing up easy — that converts.
-              </p>
-              <p>
-                We build fitness websites that capture the energy of what you do and make it as easy as possible for the right people to say yes.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* What we build */}
-        <section className="py-16 sm:py-24">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <h2 className="text-3xl font-bold text-center">What We Build for Fitness Businesses</h2>
-            <ul className="grid sm:grid-cols-2 gap-5">
-              {features.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <Pricing onNavigate={navigateSection} />
-
-        {/* FAQ */}
-        <section className="py-16 sm:py-24 bg-card/30">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <h2 className="text-3xl font-bold text-center">Frequently Asked Questions</h2>
-            <div className="space-y-4">
-              {faqs.map((faq) => (
-                <details key={faq.q} className="border border-border rounded-lg p-5 group">
-                  <summary className="font-semibold cursor-pointer list-none flex justify-between items-center gap-3">
-                    {faq.q}
-                    <span className="text-primary text-xl leading-none group-open:rotate-45 transition-transform">+</span>
-                  </summary>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">{faq.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-16 sm:py-24 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-bold">Let's Build a Site That Grows Your Membership</h2>
-            <p className="text-lg text-muted-foreground">
-              Tell us about your gym or studio. We'll put together a plan that fits your goals.
-            </p>
-            <Link href="/contact">
-              <Button size="lg" className="text-base">Get a Free Quote</Button>
-            </Link>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
-  );
+  return <IndustryPageTemplate data={data} />;
 }

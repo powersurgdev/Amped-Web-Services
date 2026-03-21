@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUp, Facebook } from "lucide-react";
 import { Link } from "wouter";
-import logoSrc from "@assets/Amped-Web-Studios-Logo-(Copy)_(1)_1774025378166.png";
+import logoSrc from "@assets/Amped-Web-Studios-Logo.png";
 
 const services = [
   { label: "Custom Website Design", href: "/services/web-design" },

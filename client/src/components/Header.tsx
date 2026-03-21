@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
-import logoSrc from "@assets/Amped-Web-Studios-Logo-(Copy)_(1)_1774025378166.png";
+import logoSrc from "@assets/Amped-Web-Studios-Logo.png";
 
 const servicesDropdown = [
   { label: "Custom Website Design", href: "/services/web-design" },

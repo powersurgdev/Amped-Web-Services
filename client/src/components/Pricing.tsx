@@ -118,7 +118,7 @@ const pricingPlans = [
   },
 ];
 
-const upsells = [
+const addons = [
   {
     id: "logo",
     name: "Logo Design",
@@ -279,7 +279,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
           ))}
         </div>
 
-        {/* Optional Upsells */}
+        {/* Optional Addons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -288,14 +288,14 @@ export default function Pricing({ onNavigate }: PricingProps) {
           className="mt-20"
         >
           <div className="text-center mb-10 space-y-3">
-            <h3 className="text-2xl sm:text-3xl font-bold">Optional Upsells</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold">Optional Add-ons</h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Bolt on exactly what you need — nothing more.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {upsells.map((item, index) => (
+            {addons.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 16 }}
@@ -305,7 +305,7 @@ export default function Pricing({ onNavigate }: PricingProps) {
               >
                 <Card
                   className="h-full hover-elevate transition-all duration-300"
-                  data-testid={`card-upsell-${item.id}`}
+                  data-testid={`card-addon-${item.id}`}
                 >
                   <CardContent className="p-6 space-y-4">
                     <div className="flex items-start justify-between gap-3 flex-wrap">

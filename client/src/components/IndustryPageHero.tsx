@@ -4,12 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Sparkles, Zap } from "lucide-react";
 
-interface StatItem {
+export interface StatItem {
   value: string;
   label: string;
 }
 
-interface IndustryPageHeroProps {
+export interface IndustryPageHeroProps {
   industry: string;
   headline: string;
   highlightedPhrase?: string;
