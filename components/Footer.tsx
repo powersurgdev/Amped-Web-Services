@@ -2,7 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUp, Facebook } from "lucide-react";
 import Link from 'next/link';
-import logoSrc from "@assets/Amped-Web-Studios-Logo.png";
+import Image from "next/image";
+import logoSrc from "@assets/Amped-Web-Studios-Logo.webp";
 
 const services = [
   { label: "Custom Website Design", href: "/services/web-design" },
@@ -47,7 +48,7 @@ export default function Footer() {
 
           {/* Column 1 — Brand (spans 2 on lg) */}
           <div className="lg:col-span-2 space-y-4">
-            <img src={logoSrc.src} alt="Amped Web Studios" className="h-16 w-auto" />
+            <Image src={logoSrc} alt="Amped Web Studios" height={64} width={192} style={{ height: '4rem', width: 'auto' }} />
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               Custom websites built to convert. Clean code, real results, no fluff.
             </p>

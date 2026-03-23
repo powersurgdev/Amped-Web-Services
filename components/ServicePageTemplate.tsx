@@ -13,9 +13,10 @@ import { Button } from "@/components/ui/button";
 
 import Footer from "@/components/Footer";
 import ServicePageHero from "@/components/ServicePageHero";
-import vergaImg from "@assets/generated_images/verga_electric_portfolio.png";
-import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.png";
-import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.png";
+import Image from "next/image";
+import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
+import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.webp";
+import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.webp";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -308,9 +309,9 @@ export default function ServicePageTemplate({
           </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[
-              { src: vergaImg.src, name: "Verga Electric", industry: "Electrical Contractor" },
-              { src: vanguardImg.src, name: "Vanguard Gutters", industry: "Home Services" },
-              { src: grandOaksImg.src, name: "Grand Oaks", industry: "Property Maintenance" },
+              { src: vergaImg, name: "Verga Electric", industry: "Electrical Contractor" },
+              { src: vanguardImg, name: "Vanguard Gutters", industry: "Home Services" },
+              { src: grandOaksImg, name: "Grand Oaks", industry: "Property Maintenance" },
             ].map((item, i) => (
               <motion.div
                 key={item.name}
@@ -322,11 +323,13 @@ export default function ServicePageTemplate({
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className="group rounded-xl overflow-hidden border border-border shadow-lg bg-card"
               >
-                <div className="overflow-hidden">
-                  <img
+                <div className="overflow-hidden relative h-52">
+                  <Image
                     src={item.src}
                     alt={`${item.name} website`}
-                    className="w-full h-52 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="px-4 py-3 flex items-center justify-between">

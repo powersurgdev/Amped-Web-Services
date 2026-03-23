@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    unoptimized: true,
+    formats: ['image/webp', 'image/avif'],
   },
 };
 

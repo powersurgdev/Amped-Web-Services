@@ -103,7 +103,7 @@ function ResponsiveMockup() {
                 <div className="w-10 h-2 rounded-full bg-border/70" />
               </div>
               <img
-                src="/mockups/mobile-gutters.png"
+                src="/mockups/mobile-gutters.webp"
                 alt="Mobile site example"
                 className="w-full block"
               />
@@ -137,7 +137,7 @@ function ResponsiveMockup() {
                 </div>
               </div>
               <img
-                src="/mockups/desktop-service-areas.png"
+                src="/mockups/desktop-service-areas.webp"
                 alt="Desktop site example"
                 className="w-full block"
               />
@@ -157,13 +157,13 @@ function ResponsiveMockup() {
               </div>
               <div className="flex-1 h-4 rounded bg-background/60" />
             </div>
-            <img src="/mockups/desktop-service-areas.png" alt="Desktop site example" className="w-full block" />
+            <img src="/mockups/desktop-service-areas.webp" alt="Desktop site example" className="w-full block" />
           </div>
           <div className="mx-auto w-[200px] rounded-[1.5rem] border-4 border-border bg-card shadow-xl overflow-hidden">
             <div className="h-5 bg-muted flex items-center justify-center">
               <div className="w-12 h-2 rounded-full bg-border/70" />
             </div>
-            <img src="/mockups/mobile-gutters.png" alt="Mobile site example" className="w-full block" />
+            <img src="/mockups/mobile-gutters.webp" alt="Mobile site example" className="w-full block" />
             <div className="h-4 bg-muted flex items-center justify-center">
               <div className="w-14 h-1 rounded-full bg-border/60" />
             </div>

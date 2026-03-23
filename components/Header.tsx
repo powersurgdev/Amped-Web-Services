@@ -5,7 +5,8 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import logoSrc from "@assets/Amped-Web-Studios-Logo.png";
+import Image from "next/image";
+import logoSrc from "@assets/Amped-Web-Studios-Logo.webp";
 
 const servicesDropdown = [
   { label: "Custom Website Design", href: "/services/web-design" },
@@ -86,7 +87,7 @@ export default function Header() {
               className="hover-elevate active-elevate-2 rounded-md transition-colors flex items-center"
               aria-label="Amped Web Studios — Home"
             >
-              <img src={logoSrc.src} alt="Amped Web Studios" className="h-14 w-auto" />
+              <Image src={logoSrc} alt="Amped Web Studios" height={56} width={168} style={{ height: '3.5rem', width: 'auto' }} priority />
             </Link>
 
             {/* Desktop nav */}

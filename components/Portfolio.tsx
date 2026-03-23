@@ -6,27 +6,28 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.png";
-import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.png";
-import vergaImg from "@assets/generated_images/verga_electric_portfolio.png";
+import Image from "next/image";
+import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.webp";
+import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.webp";
+import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
 
 const portfolioItems = [
   {
-    image: grandOaksImg.src,
+    image: grandOaksImg,
     title: "Grand Oaks Tree Service",
     description: "Professional tree service website built to drive local calls and service requests",
     tag: "Tree Service",
     url: "https://grandoakspropertymaintenance.com/",
   },
   {
-    image: vanguardImg.src,
+    image: vanguardImg,
     title: "Vanguard Gutters",
     description: "Clean, conversion-focused site for a gutter installation and repair company",
     tag: "Home Services",
     url: "https://vanguardgutters.com/",
   },
   {
-    image: vergaImg.src,
+    image: vergaImg,
     title: "Verga Electric",
     description: "Professional electrician website designed to generate calls and service requests",
     tag: "Electrical Services",
@@ -72,11 +73,13 @@ export default function Portfolio() {
                   data-testid={`card-portfolio-${index}`}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden flex-shrink-0">
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      priority={index === 0}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
@@ -106,12 +109,13 @@ export default function Portfolio() {
           </DialogDescription>
           {selectedItem !== null && (
             <div className="space-y-6 p-6">
-              <div className="rounded-md overflow-hidden bg-muted">
-                <img
+              <div className="rounded-md overflow-hidden bg-muted relative" style={{ height: '60vh' }}>
+                <Image
                   src={portfolioItems[selectedItem].image}
                   alt={portfolioItems[selectedItem].title}
-                  loading="lazy"
-                  className="w-full object-contain max-h-[60vh]"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-contain"
                 />
               </div>
               <div className="space-y-4">

@@ -107,10 +107,17 @@ Preferred communication style: Simple, everyday language.
 - Use `next/font/google` with CSS variable approach (`--font-inter`)
 - The CSS variable is referenced in `app/globals.css` via `--font-sans: var(--font-inter), Inter, ...`
 
+**Image Optimization**:
+- All portfolio and mockup images converted to WebP format (95-98% size reduction)
+- Portfolio images use Next.js `<Image>` component with `fill`, `sizes`, and `priority` props
+- Service page template portfolio section uses Next.js `<Image>` with `fill` and `sizes`
+- Industry page template mockups reference `.webp` files from `/mockups/`
+- `next.config.ts` enables `formats: ['image/webp', 'image/avif']`
+
 **Logo**:
-- Located at `attached_assets/Amped-Web-Studios-Logo.png`
-- Imported via `@assets/Amped-Web-Studios-Logo.png` webpack alias
-- Used as `<img src={logoSrc.src} />` (StaticImageData object)
+- Located at `attached_assets/Amped-Web-Studios-Logo.webp` (WebP format)
+- Imported via `@assets/Amped-Web-Studios-Logo.webp` webpack alias
+- Used with Next.js `<Image>` component in Header and Footer
 
 **Hero Animation Style**:
 - Uses `<span className="text-primary"><AnimatedText text="..." delay={0.6} /></span>`
