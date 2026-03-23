@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/portfolio/page": "app/portfolio/page.js",
+  "/privacy/page": "app/privacy/page.js",
+  "/services/web-development/page": "app/services/web-development/page.js",
+  "/services/web-design/page": "app/services/web-design/page.js",
+  "/services/hosting-care/page": "app/services/hosting-care/page.js"
+}
