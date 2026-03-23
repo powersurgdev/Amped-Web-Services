@@ -4,6 +4,7 @@ import { type Server } from "node:http";
 
 import express, { type Express } from "express";
 import runApp from "./app";
+import { injectMetaTags } from "./meta-inject.js";
 
 export async function serveStatic(app: Express, _server: Server) {
   const distPath = path.resolve(import.meta.dirname, "public");
@@ -16,9 +17,15 @@ export async function serveStatic(app: Express, _server: Server) {
 
   app.use(express.static(distPath));
 
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  // Cache the base HTML in memory
+  const indexHtml = fs.readFileSync(path.resolve(distPath, "index.html"), "utf-8");
+
+  // Inject per-page meta tags before serving
+  app.use("*", (req, res) => {
+    const urlPath = req.originalUrl.split('?')[0];
+    const enhanced = injectMetaTags(indexHtml, urlPath);
+    res.setHeader("Content-Type", "text/html");
+    res.send(enhanced);
   });
 }
 
