@@ -108,8 +108,8 @@ function renderHeadline(headline: string, highlightedPhrase?: string) {
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.45, delay: phraseDelay, ease: "easeOut" }}
-        className="bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent"
+        transition={{ duration: 0.4, delay: phraseDelay, ease: [0.33, 1, 0.68, 1] }}
+        className="inline bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent"
       >
         {highlightedPhrase}
       </motion.span>
