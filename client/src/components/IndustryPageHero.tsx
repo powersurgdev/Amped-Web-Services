@@ -106,7 +106,14 @@ function renderHeadline(headline: string, highlightedPhrase?: string) {
     <>
       {before && <AnimatedText text={before} delay={0.3} />}
       <span className="bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent">
-        <AnimatedText text={highlightedPhrase} delay={phraseDelay} />
+        <motion.span
+          initial={{ opacity: 0, y: "30%" }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: phraseDelay, ease: [0.33, 1, 0.68, 1] }}
+          className="inline-block"
+        >
+          {highlightedPhrase}
+        </motion.span>
       </span>
       {after && <AnimatedText text={after} delay={afterDelay} />}
     </>
