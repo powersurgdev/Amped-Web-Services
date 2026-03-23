@@ -101,18 +101,13 @@ function renderHeadline(headline: string, highlightedPhrase?: string) {
   const before = headline.slice(0, idx);
   const after = headline.slice(idx + highlightedPhrase.length);
   const phraseDelay = 0.3 + before.length * 0.02;
-  const afterDelay = phraseDelay + 0.5;
+  const afterDelay = phraseDelay + highlightedPhrase.length * 0.02;
   return (
     <>
       {before && <AnimatedText text={before} delay={0.3} />}
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.45, delay: phraseDelay, ease: "easeOut" }}
-        className="bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent"
-      >
-        {highlightedPhrase}
-      </motion.span>
+      <span className="text-primary">
+        <AnimatedText text={highlightedPhrase} delay={phraseDelay} />
+      </span>
       {after && <AnimatedText text={after} delay={afterDelay} />}
     </>
   );
