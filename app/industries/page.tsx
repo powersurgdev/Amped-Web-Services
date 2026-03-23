@@ -42,7 +42,7 @@ export default function IndustriesHub() {
           <p className="text-lg sm:text-xl text-muted-foreground">
             Every industry has different customers, different trust signals, and different reasons people call or walk away. We build sites that speak to your specific customer — not a generic business audience.
           </p>
-          <Link href="/contact"><Button size="lg">Get a Free Quote</Button></Link>
+          <Button asChild size="lg"><Link href="/contact">Get a Free Quote</Link></Button>
         </div>
       </section>
       <section className="pb-20 sm:pb-28">
@@ -73,7 +73,7 @@ export default function IndustriesHub() {
           <p className="text-lg text-muted-foreground">
             We work with all kinds of local businesses. If you're not on the list, reach out — we've probably built something like it before.
           </p>
-          <Link href="/contact"><Button size="lg" className="text-base">Let's Talk</Button></Link>
+          <Button asChild size="lg" className="text-base"><Link href="/contact">Let's Talk</Link></Button>
         </div>
       </section>
     </main>

@@ -385,9 +385,9 @@ function CTASection({
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">{ctaHeadline}</h2>
           <p className="text-lg text-muted-foreground mb-8">{ctaBody}</p>
-          <Link href="/contact">
-            <Button size="lg" className="text-base">Get a Free Quote</Button>
-          </Link>
+          <Button asChild size="lg" className="text-base">
+            <Link href="/contact">Get a Free Quote</Link>
+          </Button>
           <p className="mt-4 text-sm text-muted-foreground/60">
             No contracts · Response within 1 business day
           </p>

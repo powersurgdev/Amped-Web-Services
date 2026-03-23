@@ -187,9 +187,9 @@ export default function Header() {
             </nav>
 
             {/* Desktop CTA */}
-            <Link href="/contact" className="hidden md:inline-flex">
-              <Button>Get Started Today!</Button>
-            </Link>
+            <Button asChild className="hidden md:inline-flex">
+              <Link href="/contact">Get Started Today!</Link>
+            </Button>
 
             {/* Mobile hamburger */}
             <button
@@ -335,11 +335,11 @@ export default function Header() {
               </Link>
 
               <div className="pt-5 pb-2">
-                <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                  <Button size="lg" className="w-full text-base">
+                <Button asChild size="lg" className="w-full text-base">
+                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
                     Get a Free Quote
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </nav>
           </motion.div>

@@ -26,8 +26,8 @@ export default function PortfolioPage() {
             Every site we build is designed from scratch for one goal: make your phone ring and your inbox full. Here's a look at what we've launched for real local businesses.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-            <Link href="/contact"><Button size="lg">Start Your Project</Button></Link>
-            <Link href="/services"><Button size="lg" variant="outline">See Our Services</Button></Link>
+            <Button asChild size="lg"><Link href="/contact">Start Your Project</Link></Button>
+            <Button asChild size="lg" variant="outline"><Link href="/services">See Our Services</Link></Button>
           </div>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function PortfolioPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-bold">Ready to Build Something Like This for Your Business?</h2>
           <p className="text-lg text-muted-foreground">Tell us about your project. We'll come back with a custom plan and clear pricing — no fluff.</p>
-          <Link href="/contact"><Button size="lg" className="text-base">Get a Free Quote</Button></Link>
+          <Button asChild size="lg" className="text-base"><Link href="/contact">Get a Free Quote</Link></Button>
         </div>
       </section>
     </main>

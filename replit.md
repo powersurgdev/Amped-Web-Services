@@ -1,10 +1,10 @@
-# Amped Web Studios - Landing Page
+# Amped Web Studios - Multi-Page Marketing Website
 
 ## Overview
 
-This is a one-page landing website for "Amped Web Studios," a Florida-based web design, SEO, hosting, and digital marketing agency. The application is built as a modern, conversion-focused marketing site with a tech-forward aesthetic inspired by Stripe's design language. The site features smooth scrolling, animations, and a contact form for lead generation.
+This is a multi-page marketing website for "Amped Web Studios," a Florida-based web design, SEO, hosting, and digital marketing agency. The application is built as a modern, conversion-focused marketing site with a tech-forward aesthetic inspired by Stripe's design language. The site features smooth scrolling, animations, and a contact form for lead generation.
 
-The tech stack consists of a React frontend with TypeScript, Express.js backend, and uses shadcn/ui components with Tailwind CSS for styling. The application includes a contact form submission system that stores leads.
+The tech stack is Next.js 15 with React 19, App Router, Tailwind CSS, shadcn/ui, and Framer Motion. The application includes a contact form submission system that stores leads in a PostgreSQL database.
 
 ## User Preferences
 
@@ -14,24 +14,23 @@ Preferred communication style: Simple, everyday language.
 
 ### Frontend Architecture
 
-**Framework**: React with TypeScript using Vite as the build tool
+**Framework**: Next.js 15 with React 19, App Router, and SSR
 
-**Routing**: Uses wouter for client-side routing, though the application is primarily a single-page layout
+**Routing**: Next.js App Router with file-based routing in `app/` directory
 
 **Component Library**: shadcn/ui built on Radix UI primitives, providing accessible, customizable components
 
 **Styling**: 
 - Tailwind CSS with custom design tokens
-- Dark theme by default with electric blue/teal accent colors
-- Custom CSS variables for theming defined in `client/src/index.css`
-- Inter/Manrope font families via Google Fonts
+- Dark theme (permanent, no toggle) with electric blue accent colors
+- Custom CSS variables for theming defined in `app/globals.css`
+- Inter font via `next/font/google` (loaded as CSS variable `--font-inter`)
 
 **State Management**:
 - React Query (@tanstack/react-query) for server state
 - React Hook Form with Zod validation for form handling
-- No global state management library (not needed for single-page site)
 
-**Animation**: Framer Motion for scroll-based animations and micro-interactions
+**Animation**: Framer Motion v12 for scroll-based animations and micro-interactions
 
 **Design System**:
 - Follows design guidelines in `design_guidelines.md`
@@ -39,21 +38,33 @@ Preferred communication style: Simple, everyday language.
 - Component variants using class-variance-authority
 - Consistent hover states and elevation effects
 
+### Pages & Routing
+
+- `/` — Home (Hero, SocialProof, Portfolio, Pricing, Services, Process, About, CTAStrip, Contact)
+- `/services` — All services overview
+- `/services/web-design` — Custom Website Design
+- `/services/web-development` — Development & Launch
+- `/services/hosting-care` — Hosting & Care Plans
+- `/services/seo-local-search` — SEO & Local Search
+- `/services/website-refresh` — Website Optimization
+- `/services/digital-marketing` — Digital Marketing
+- `/industries` — All industries overview
+- `/industries/home-services`, `/industries/contractors`, `/industries/restaurants`, etc.
+- `/portfolio` — Portfolio
+- `/contact` — Contact page
+- `/privacy` — Privacy Policy
+- `/terms` — Terms of Service
+
 ### Backend Architecture
 
-**Server Framework**: Express.js with TypeScript
-
-**Development vs Production**:
-- Development mode (`server/index-dev.ts`): Uses Vite dev server with HMR
-- Production mode (`server/index-prod.ts`): Serves static built files
+**Server Framework**: Next.js API routes (App Router route handlers)
 
 **API Structure**:
-- RESTful API endpoint: `POST /api/contact` for form submissions
+- `POST /api/contact` for form submissions
 - Request/response validation using Zod schemas
-- Error handling with descriptive messages
 
 **Data Validation**: 
-- Shared Zod schemas between frontend and backend (`shared/schema.ts`)
+- Shared Zod schemas (`shared/schema.ts`)
 - Type-safe data models using drizzle-zod
 
 ### Data Storage
@@ -66,73 +77,49 @@ Preferred communication style: Simple, everyday language.
 - `users` table: Basic user authentication structure (currently unused)
 - `contact_submissions` table: Stores contact form leads with fields for name, email, company, budget, message, and timestamp
 
-**Storage Pattern**:
-- Abstracted storage interface (`IStorage`) in `server/storage.ts`
-- PostgreSQL database with Drizzle ORM (`DatabaseStorage` implementation)
-- Database connection configured in `server/db.ts` using Neon serverless driver
-
 **Migration Strategy**: Drizzle Kit for schema migrations with `npm run db:push`
 
-### External Dependencies
+### Key Files
 
-**UI Component Libraries**:
-- @radix-ui/* - Headless UI primitives for accessibility
-- shadcn/ui - Pre-built component system
-- Framer Motion - Animation library
-- Lucide React - Icon system
-
-**Form Handling**:
-- react-hook-form - Form state management
-- @hookform/resolvers - Zod integration for validation
-
-**Database & ORM**:
-- @neondatabase/serverless - Serverless PostgreSQL driver
-- drizzle-orm - TypeScript ORM
-- drizzle-zod - Zod schema generation from Drizzle tables
-
-**Development Tools**:
-- Vite - Build tool and dev server
-- @replit/vite-plugin-* - Replit-specific development enhancements
-- PostCSS with Tailwind and Autoprefixer
-
-**Utilities**:
-- clsx & tailwind-merge (via cn utility) - Class name management
-- date-fns - Date formatting
-- zod - Runtime type validation
-- wouter - Lightweight routing
+- `app/layout.tsx` — Root layout with Header, Footer, Providers, and `next/font` Inter loading
+- `app/page.tsx` — Home page (server component with metadata, imports client components)
+- `app/providers.tsx` — Client-side providers (QueryClientProvider, TooltipProvider, Toaster)
+- `next.config.ts` — Next.js config with `@assets` webpack alias, `allowedDevOrigins`, `images.unoptimized`
+- `components/Header.tsx` — Responsive header with dropdown nav menus
+- `components/Footer.tsx` — Site footer with links and branding
+- `components/Hero.tsx` — Home page hero with AnimatedText character animation
+- `components/IndustryPageTemplate.tsx` — Reusable template for industry pages
+- `components/ServicePageTemplate.tsx` — Reusable template for service pages
+- `shared/schema.ts` — Drizzle ORM schema and Zod validation schemas
+- `app/globals.css` — Theme CSS variables, Tailwind utilities
+- `design_guidelines.md` — Design system documentation
 
 ### Architecture Decisions
 
-**Single Page Application**: 
-- Chosen for simplicity and smooth user experience
-- All sections are on one page with anchor-link navigation
-- Reduces server requests and provides instant navigation
+**Next.js 15 App Router**:
+- Server components for pages (metadata export for SEO)
+- Client components for interactive UI (`'use client'` directive)
+- Font loading via `next/font/google` (NOT manual `<link>` tags — these cause hydration errors)
+- Favicon via metadata `icons` property
 
-**Component Co-location**:
-- Page components in `client/src/pages/`
-- Reusable components in `client/src/components/`
-- Example components for development in `client/src/components/examples/`
+**Font Loading**:
+- IMPORTANT: Do NOT use manual `<link>` tags in `<head>` for fonts — this causes hydration mismatches in Next.js 15
+- Use `next/font/google` with CSS variable approach (`--font-inter`)
+- The CSS variable is referenced in `app/globals.css` via `--font-sans: var(--font-inter), Inter, ...`
 
-**Type Safety**:
-- Shared types between client and server via `shared/` directory
-- Path aliases configured in tsconfig.json (@/, @shared/*, @assets/*)
-- Zod for runtime validation matching TypeScript types
+**Logo**:
+- Located at `attached_assets/Amped-Web-Studios-Logo.png`
+- Imported via `@assets/Amped-Web-Studios-Logo.png` webpack alias
+- Used as `<img src={logoSrc.src} />` (StaticImageData object)
 
-**Build Strategy**:
-- Frontend built with Vite to `dist/public`
-- Backend bundled with esbuild to `dist/index.js`
-- Production serves static frontend with Express fallback to index.html
-
-**Form to API Flow**:
-1. User fills contact form with validation (Zod schema)
-2. Form submits to POST /api/contact
-3. Server validates with same Zod schema
-4. Data stored via storage interface
-5. Success/error response returned to client
-6. Toast notification displayed to user
+**Hero Animation Style**:
+- Uses `<span className="text-primary"><AnimatedText text="..." delay={0.6} /></span>`
+- AnimatedText component does character-by-character roll-up animation
+- All service/industry hero pages follow this same pattern
 
 **Styling Philosophy**:
 - Utility-first with Tailwind CSS
 - Custom design tokens for brand consistency
 - Hover and active states with elevation effects
 - Responsive design with mobile-first approach
+- Dark theme only (no light/dark toggle)

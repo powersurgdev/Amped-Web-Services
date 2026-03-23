@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 import path from 'node:path';
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['*.picard.replit.dev'],
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,
