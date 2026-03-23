@@ -101,7 +101,7 @@ function renderHeadline(headline: string, highlightedPhrase?: string) {
   const before = headline.slice(0, idx);
   const after = headline.slice(idx + highlightedPhrase.length);
   const phraseDelay = 0.3 + before.length * 0.02;
-  const afterDelay = phraseDelay + highlightedPhrase.length * 0.02;
+  const afterDelay = phraseDelay + 0.5;
   return (
     <>
       {before && <AnimatedText text={before} delay={0.3} />}
