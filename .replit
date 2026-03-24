@@ -37,3 +37,11 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[agent]
+integrations = ["sendgrid:1.0.0"]
+
+[userenv]
+
+[userenv.shared]
+NOTIFICATION_EMAIL = "valentinventuresfl@gmail.com"
