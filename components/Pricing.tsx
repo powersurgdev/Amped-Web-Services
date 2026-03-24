@@ -251,9 +251,6 @@ export default function Pricing({ onNavigate = scrollToSection }: PricingProps) 
                     >
                       {plan.cta}
                     </Button>
-                    {plan.note && (
-                      <p className="text-xs text-center text-muted-foreground">{plan.note}</p>
-                    )}
                   </div>
                 </CardContent>
               </Card>
