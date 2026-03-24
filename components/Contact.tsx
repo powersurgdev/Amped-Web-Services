@@ -173,9 +173,10 @@ export default function Contact() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="under-1500">Under $1,500</SelectItem>
-                          <SelectItem value="1500-3000">$1,500 – $3,000</SelectItem>
-                          <SelectItem value="3000-plus">$3,000+</SelectItem>
+                          <SelectItem value="under-1000">Under $1,000</SelectItem>
+                          <SelectItem value="1000-1500">$1,000 – $1,500</SelectItem>
+                          <SelectItem value="1500-2000">$1,500 – $2,000</SelectItem>
+                          <SelectItem value="2000-plus">$2,000+</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

@@ -11,7 +11,6 @@ const services = [
   { label: "Hosting & Care Plans", href: "/services/hosting-care" },
   { label: "SEO & Local Search", href: "/services/seo-local-search" },
   { label: "Website Optimization", href: "/services/website-refresh" },
-  { label: "Digital Marketing", href: "/services/digital-marketing" },
 ];
 
 const industries = [

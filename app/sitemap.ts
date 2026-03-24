@@ -15,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services/hosting-care', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/services/seo-local-search', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/services/website-refresh', priority: 0.8, changeFrequency: 'monthly' },
-    { path: '/services/digital-marketing', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/industries', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/industries/home-services', priority: 0.7, changeFrequency: 'monthly' },
     { path: '/industries/contractors', priority: 0.7, changeFrequency: 'monthly' },

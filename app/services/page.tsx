@@ -2,15 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Palette, Code, Server, Search, TrendingUp, Megaphone, ArrowRight } from 'lucide-react';
+import { Palette, Code, Server, Search, TrendingUp, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Services — Amped Web Studios',
-  description: 'From custom web design to SEO and digital marketing — see everything Amped Web Studios offers for small businesses.',
+  description: 'Custom websites, local SEO, Google presence setup, and more — see everything Amped Web Studios offers for small businesses.',
   alternates: { canonical: '/services' },
   openGraph: {
     title: 'Services — Amped Web Studios',
-    description: 'From custom web design to SEO and digital marketing — see everything Amped Web Studios offers for small businesses.',
+    description: 'Custom websites, local SEO, Google presence setup, and more — see everything Amped Web Studios offers for small businesses.',
     url: '/services',
     images: [{ url: '/og-images/services.png', width: 1200, height: 630 }],
   },
@@ -23,7 +23,6 @@ const services = [
   { icon: Server, title: 'Hosting & Care Plans', description: 'We manage your hosting, updates, backups, and security — so your site is always live, fast, and protected.', href: '/services/hosting-care' },
   { icon: Search, title: 'SEO & Local Search', description: 'We optimize your site to rank in local search results, so nearby customers find you before they find your competition.', href: '/services/seo-local-search' },
   { icon: TrendingUp, title: 'Website Optimization & Refresh', description: 'Got a site that\'s falling behind? We redesign, rebuild, and optimize for speed, conversions, and modern UX.', href: '/services/website-refresh' },
-  { icon: Megaphone, title: 'Digital Marketing & Growth', description: 'Review management, local SEO pages, and targeted content — we help you grow well beyond just a website.', href: '/services/digital-marketing' },
 ];
 
 export default function ServicesHub() {

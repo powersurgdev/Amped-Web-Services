@@ -81,7 +81,7 @@ export default function HostingCarePage() {
           icon: <Edit className="w-6 h-6 text-primary" />,
           title: "Content Updates",
           description:
-            "Need new hours, a fresh photo, or an updated service? Email us — most updates are done within 1–2 business days.",
+            "Need to update your hours, swap a photo, or fix a line of text? That's part of what your monthly fee covers. Send us a message and we'll handle it — no tech know-how required.",
         },
         {
           icon: <Wrench className="w-6 h-6 text-primary" />,

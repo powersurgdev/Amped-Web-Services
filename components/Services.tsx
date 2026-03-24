@@ -1,38 +1,39 @@
 'use client';
 import { Card, CardContent } from "@/components/ui/card";
-import { Palette, Code, Server, TrendingUp, Search, Megaphone } from "lucide-react";
+import { Palette, Code, Server, TrendingUp, Search, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const services = [
   {
     icon: Palette,
     title: "Custom Website Design",
     description: "No templates, no shortcuts. Every site is designed from scratch around your brand, your audience, and your goals.",
+    href: "/services/web-design",
   },
   {
     icon: Code,
     title: "Development & Launch",
     description: "Hand-coded, fast-loading, and built to perform. We handle everything from domain setup to go-live.",
+    href: "/services/web-development",
   },
   {
     icon: Server,
     title: "Hosting & Care Plans",
     description: "We manage your hosting, updates, backups, and security — so your site is always live, fast, and protected.",
+    href: "/services/hosting-care",
   },
   {
     icon: Search,
     title: "SEO & Local Search",
     description: "We optimize your site to rank in local search results, so nearby customers find you before they find your competition.",
+    href: "/services/seo-local-search",
   },
   {
     icon: TrendingUp,
     title: "Optimization & Refresh",
     description: "Got a site that's falling behind? We redesign, rebuild, and optimize for speed, conversions, and modern UX.",
-  },
-  {
-    icon: Megaphone,
-    title: "Digital Marketing & Growth",
-    description: "Review management, local SEO pages, and targeted content — we help you grow well beyond just a website.",
+    href: "/services/website-refresh",
   },
 ];
 
@@ -55,7 +56,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -63,21 +64,27 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
-              <Card
-                className="h-full hover-elevate transition-all duration-300 hover:shadow-lg"
-                data-testid={`card-service-${index}`}
-              >
-                <CardContent className="p-4 sm:p-6 space-y-4">
-                  <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center">
-                    <service.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <Link href={service.href} className="block h-full group">
+                <Card
+                  className="h-full hover-elevate transition-all duration-300 hover:shadow-lg cursor-pointer"
+                  data-testid={`card-service-${index}`}
+                >
+                  <CardContent className="p-4 sm:p-6 space-y-4 flex flex-col h-full">
+                    <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed flex-1">
+                      {service.description}
+                    </p>
+                    <div className="flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                      Learn more <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>

@@ -8,12 +8,11 @@ import {
   Rocket,
   Eye,
   TrendingUp,
-  Crown,
   Palette,
   FilePlus,
   Zap,
-  Star,
   MapPin,
+  Globe,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
@@ -32,95 +31,72 @@ const pricingPlans = [
   {
     id: "launch",
     name: "Launch",
-    hook: "Get online fast.",
+    hook: "Everything you need to put your business on the map.",
     oneTime: "$500",
     monthly: "$35",
     period: "/mo",
     description:
-      "Perfect for businesses that just need a clean, professional website live without the extra marketing setup.",
+      "A complete, professional website covering all the core pages a local business needs — built clean, fast, and ready to be found.",
     features: [
-      "Custom website build",
-      "Up to 8 pages",
-      "Mobile-friendly design",
-      "Domain connection",
-      "Hosting & SSL included",
-      "Basic contact form",
-      "Standard launch setup",
+      "Custom website — up to 10 pages",
+      "Home, About, Contact, Portfolio + up to 6 service pages",
+      "Mobile-first, responsive design",
+      "Basic on-page SEO (titles, descriptions, alt text)",
+      "Google Analytics 4 installation",
+      "Google Search Console setup & verification",
+      "Hosting, SSL & contact form included",
+      "Speed & performance optimization",
     ],
-    bestFor: "Businesses that need a professional online presence",
+    bestFor: "New businesses or anyone running off a Facebook page who needs a clean, credible web presence",
     cta: "Launch My Site",
-    popular: false,
+    popular: true,
     icon: Rocket,
   },
   {
     id: "visibility",
     name: "Visibility",
-    hook: "Start getting found on Google.",
-    oneTime: "$500",
+    hook: "Show up where your customers are already searching.",
+    oneTime: "$1,000",
     monthly: "$100",
     period: "/mo",
     description:
-      "Great for businesses that want more than just a website and need the right tools to start building traffic.",
+      "We answer the question your customers are asking: \"Do you service my area?\" Your site, your Google listing, and your service areas — all working together.",
     features: [
       "Everything in Launch",
-      "Google Business Profile setup",
-      "Call tracking setup",
-      "User behavior tracking",
-      "Google Analytics 4 setup",
-      "Google Search Console setup",
-      "4 SEO blog posts per month",
+      "Google Business Profile setup & optimization",
+      "GA4 goal configuration (calls, forms, clicks)",
+      "Call tracking number setup",
+      "Service-area landing pages (e.g., \"Tree Services in Wesley Chapel\")",
+      "LocalBusiness schema markup",
+      "Monthly GBP post to keep your listing active",
     ],
-    bestFor: "Businesses that want foundational visibility tools",
-    cta: "Get Started",
+    bestFor: "Businesses serving multiple cities who are getting zero Google visibility outside their front door",
+    cta: "Get Found",
     popular: false,
     icon: Eye,
   },
   {
     id: "scale",
     name: "Scale",
-    hook: "Turn your website into a growth engine.",
-    oneTime: "$500",
+    hook: "Own every search in every city you serve.",
+    oneTime: "$1,500",
     monthly: "$250",
     period: "/mo",
     description:
-      "Built for businesses that want stronger SEO support and a website ready to work alongside a marketing company or ad team.",
+      "We go deep — building individual pages for every service in every city, plus SEO content that compounds over time.",
     features: [
       "Everything in Visibility",
-      "16 SEO blog posts per month",
-      "More active content publishing",
-      "Conversion tracking setup",
-      "Support for third-party marketing teams",
-      "Ongoing website tweaks for marketing performance",
-      "Priority support",
+      "Hyper-local SEO pages (e.g., \"Tree Removal in Wesley Chapel\", \"Stump Grinding in Dade City\")",
+      "Logo design (primary + horizontal + icon variations)",
+      "Brand color palette & font reference sheet",
+      "2 SEO blog posts per month",
+      "Up to 2 content updates per month",
+      "Ongoing on-page SEO tuning",
     ],
-    bestFor: "Businesses that want to grow traffic and support a larger marketing effort",
+    bestFor: "Established businesses ready to outrank every competitor in every city they serve",
     cta: "Scale My Business",
-    popular: true,
-    icon: TrendingUp,
-  },
-  {
-    id: "dominate",
-    name: "Dominate",
-    hook: "We handle everything. You focus on closing.",
-    oneTime: "$500",
-    monthly: "$500",
-    period: "/mo",
-    description:
-      "The full-service package for businesses that want website, SEO, tracking, and Google Ads management handled in one place.",
-    features: [
-      "Everything in Scale",
-      "Google Ads account setup",
-      "Google Ads conversion tracking setup",
-      "Google Ads campaign management",
-      "Ongoing ad updates and optimization",
-      "Landing page tweaks as needed",
-      "Continuous support for lead generation improvements",
-    ],
-    bestFor: "Businesses that want a done-for-you online growth package",
-    cta: "Book a Call",
     popular: false,
-    note: "Ad spend not included",
-    icon: Crown,
+    icon: TrendingUp,
   },
 ];
 
@@ -128,9 +104,9 @@ const addons = [
   {
     id: "logo",
     name: "Logo Design",
-    price: "$100–$250",
+    price: "$200",
     period: "one-time",
-    description: "A professional logo built for your brand, delivered with files ready for web and print.",
+    description: "A professional logo built for your brand — primary, horizontal, and icon versions delivered with web-ready files.",
     icon: Palette,
   },
   {
@@ -143,19 +119,11 @@ const addons = [
   },
   {
     id: "rush",
-    name: "Same-Day Rush Build",
-    price: "+$100",
+    name: "Rush Build",
+    price: "+$250",
     period: "one-time",
-    description: "Need it live today? We'll prioritize your build and get your site launched the same day.",
+    description: "Need it live faster? We'll prioritize your project and deliver your site within 7 days.",
     icon: Zap,
-  },
-  {
-    id: "reviews",
-    name: "Review Management",
-    price: "$50",
-    period: "/mo",
-    description: "We monitor and respond to your Google reviews to protect your reputation and build trust.",
-    icon: Star,
   },
   {
     id: "local-seo",
@@ -167,6 +135,14 @@ const addons = [
       "Location-specific pages built for cities or service areas you want to rank in on Google. For example: Tree Removal in Wesley Chapel, Stump Grinding in Land O' Lakes, or AC Repair in Lutz. These pages help your business show up when people in nearby areas search for what you offer.",
     icon: MapPin,
     expandable: true,
+  },
+  {
+    id: "gbp-cleanup",
+    name: "GBP Cleanup",
+    price: "$99",
+    period: "one-time",
+    description: "Already have a Google Business Profile but it's a mess? We audit, clean, and fully optimize your existing listing.",
+    icon: Globe,
   },
 ];
 
@@ -189,12 +165,12 @@ export default function Pricing({ onNavigate = scrollToSection }: PricingProps) 
             Simple Plans for Getting Your Business Online
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Every plan includes a $500 one-time build fee. No hidden costs. No long-term contracts.
+            One-time build fee + a low monthly rate. No hidden costs. No long-term contracts.
           </p>
         </motion.div>
 
-        {/* Package Cards — 2×2 grid */}
-        <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {/* Package Cards — 3-column grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={plan.id}
@@ -300,7 +276,7 @@ export default function Pricing({ onNavigate = scrollToSection }: PricingProps) 
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-5 max-w-5xl mx-auto">
             {addons.map((item, index) => (
               <motion.div
                 key={item.id}
@@ -308,6 +284,7 @@ export default function Pricing({ onNavigate = scrollToSection }: PricingProps) 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.35 + index * 0.07 }}
+                className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
               >
                 <Card
                   className="h-full hover-elevate transition-all duration-300"

@@ -73,9 +73,9 @@ export default function SeoLocalSearchPage() {
         },
         {
           icon: <BarChart2 className="w-6 h-6 text-primary" />,
-          title: "Monthly Reporting",
+          title: "Service Area Pages",
           description:
-            "Clear monthly reports showing ranking movement, traffic changes, and lead activity. You always know what's working.",
+            "Dedicated pages built around the cities and zip codes you serve — so when someone searches in your area, there's a page built exactly for that search.",
         },
         {
           icon: <ShieldCheck className="w-6 h-6 text-primary" />,
@@ -87,7 +87,7 @@ export default function SeoLocalSearchPage() {
           icon: <TrendingUp className="w-6 h-6 text-primary" />,
           title: "Ongoing Optimization",
           description:
-            "SEO isn't one-and-done. We monitor, adjust, and push your rankings higher month over month.",
+            "SEO isn't one-and-done. On deeper plans, we monitor, adjust, and keep expanding your local footprint as your business grows.",
         },
       ]}
       problems={[
@@ -153,7 +153,7 @@ export default function SeoLocalSearchPage() {
         {
           question: "Is SEO included in my website package?",
           answer:
-            "Basic on-page SEO is included in all our website builds. Advanced local SEO campaigns are a separate ongoing service.",
+            "Yes — basic on-page SEO (titles, descriptions, headers, schema) is included in every build. Google Business Profile setup and service-area pages are part of our Visibility plan. Hyper-local landing pages and ongoing blog content come with the Scale plan.",
         },
       ]}
       ctaHeadline="Start Showing Up Where Your Customers Are Looking"
