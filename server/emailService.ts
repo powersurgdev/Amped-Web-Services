@@ -39,6 +39,15 @@ async function getUncachableSendGridClient() {
   return { client: sgMail };
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function formatBudget(budget: string): string {
   const map: Record<string, string> = {
     'under-1000': 'Under $1,000',
@@ -58,6 +67,12 @@ function buildEmailHtml(params: {
   submittedAt: string;
 }): string {
   const { name, email, company, budget, message, submittedAt } = params;
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeCompany = company ? escapeHtml(company) : '—';
+  const safeBudget = escapeHtml(formatBudget(budget));
+  const safeMessage = escapeHtml(message);
 
   const row = (label: string, value: string) => `
     <tr>
@@ -128,11 +143,11 @@ function buildEmailHtml(params: {
           <tr>
             <td style="background-color: #0a1628; border: 1px solid #1e2a3a; border-top: none; border-bottom: none; padding: 0 32px 24px;">
               <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #1e2a3a; border-radius: 8px; overflow: hidden; border-collapse: collapse;">
-                ${row('Name', name)}
-                ${row('Email', email)}
-                ${row('Company', company || '—')}
-                ${row('Budget', formatBudget(budget))}
-                ${row('Message', message)}
+                ${row('Name', safeName)}
+                ${row('Email', safeEmail)}
+                ${row('Company', safeCompany)}
+                ${row('Budget', safeBudget)}
+                ${row('Message', safeMessage)}
               </table>
             </td>
           </tr>
@@ -143,9 +158,9 @@ function buildEmailHtml(params: {
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="border-radius: 8px; background: #0070f3;">
-                    <a href="mailto:${email}?subject=Re: Your project inquiry&body=Hi ${encodeURIComponent(name)},%0A%0AThank you for reaching out to Amped Web Studios!"
+                    <a href="mailto:${safeEmail}?subject=Re: Your project inquiry&body=Hi ${encodeURIComponent(name)},%0A%0AThank you for reaching out to Amped Web Studios!"
                        style="display: inline-block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 8px;">
-                      Reply to ${name}
+                      Reply to ${safeName}
                     </a>
                   </td>
                 </tr>
