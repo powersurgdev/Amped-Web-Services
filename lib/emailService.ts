@@ -1,40 +1,14 @@
-// SendGrid integration via Replit connector
+// SendGrid integration
 import sgMail from '@sendgrid/mail';
 
-async function getApiKey(): Promise<string> {
-  const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
-  const xReplitToken = process.env.REPL_IDENTITY
-    ? 'repl ' + process.env.REPL_IDENTITY
-    : process.env.WEB_REPL_RENEWAL
-    ? 'depl ' + process.env.WEB_REPL_RENEWAL
-    : null;
+// Initialize SendGrid with API key from environment
+function getSendGridClient() {
+  const apiKey = process.env.SENDGRID_API_KEY;
 
-  if (!xReplitToken) {
-    throw new Error('X-Replit-Token not found for repl/depl');
+  if (!apiKey) {
+    throw new Error('SENDGRID_API_KEY environment variable is not set');
   }
 
-  const connectionSettings = await fetch(
-    'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=sendgrid',
-    {
-      headers: {
-        Accept: 'application/json',
-        'X-Replit-Token': xReplitToken,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((data) => data.items?.[0]);
-
-  if (!connectionSettings?.settings?.api_key) {
-    throw new Error('SendGrid not connected');
-  }
-
-  return connectionSettings.settings.api_key;
-}
-
-// WARNING: Never cache this client. Tokens expire.
-async function getUncachableSendGridClient() {
-  const apiKey = await getApiKey();
   sgMail.setApiKey(apiKey);
   return { client: sgMail };
 }
@@ -212,7 +186,7 @@ export async function sendContactNotification(params: {
     throw new Error('SENDGRID_FROM_EMAIL environment variable is not set');
   }
 
-  const { client } = await getUncachableSendGridClient();
+  const { client } = getSendGridClient();
 
   const submittedAt = new Date().toLocaleString('en-US', {
     timeZone: 'America/New_York',
