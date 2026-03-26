@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { storage } from '@/server/storage';
+import { storage } from '@/lib/storage';
 import { insertContactSubmissionSchema } from '@/shared/schema';
 import { fromError } from 'zod-validation-error';
-import { sendContactNotification } from '@/server/emailService';
+import { sendContactNotification } from '@/lib/emailService';
 
 export async function POST(request: Request) {
   try {
