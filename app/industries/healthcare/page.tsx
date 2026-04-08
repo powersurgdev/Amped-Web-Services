@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Healthcare Websites That Build Patient Trust — Amped Web Studios',
     description: 'We build websites for dentists, chiropractors, therapists, and med spas — designed to earn patient trust and fill your appointment book.',
     url: '/industries/healthcare',
-    images: [{ url: '/og-images/industries-healthcare.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-healthcare.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

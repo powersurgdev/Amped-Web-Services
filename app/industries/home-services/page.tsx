@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Websites for Home Service Companies That Generate Calls — Amped Web Studios',
     description: 'We build websites for HVAC, plumbing, electrical, gutters, tree service, and landscaping businesses designed to drive calls and booked jobs.',
     url: '/industries/home-services',
-    images: [{ url: '/og-images/industries-home-services.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-home-services.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

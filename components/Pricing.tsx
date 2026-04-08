@@ -49,7 +49,7 @@ const pricingPlans = [
     ],
     bestFor: "New businesses or anyone running off a Facebook page who needs a clean, credible web presence",
     cta: "Launch My Site",
-    popular: true,
+    popular: false,
     icon: Rocket,
   },
   {
@@ -57,7 +57,7 @@ const pricingPlans = [
     name: "Visibility",
     hook: "Show up where your customers are already searching.",
     oneTime: "$1,000",
-    monthly: "$100",
+    monthly: "$250",
     period: "/mo",
     description:
       "We answer the question your customers are asking: \"Do you service my area?\" Your site, your Google listing, and your service areas — all working together.",
@@ -72,7 +72,7 @@ const pricingPlans = [
     ],
     bestFor: "Businesses serving multiple cities who are getting zero Google visibility outside their front door",
     cta: "Get Found",
-    popular: false,
+    popular: true,
     icon: Eye,
   },
   {
@@ -80,7 +80,7 @@ const pricingPlans = [
     name: "Scale",
     hook: "Own every search in every city you serve.",
     oneTime: "$1,500",
-    monthly: "$250",
+    monthly: "$500",
     period: "/mo",
     description:
       "We go deep — building individual pages for every service in every city, plus SEO content that compounds over time.",

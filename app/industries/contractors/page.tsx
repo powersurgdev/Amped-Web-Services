@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Web Design for Contractors and Trade Businesses — Amped Web Studios',
     description: 'We build websites for remodelers, painters, flooring contractors, and general contractors — designed to generate estimate requests and close more jobs.',
     url: '/industries/contractors',
-    images: [{ url: '/og-images/industries-contractors.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-contractors.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

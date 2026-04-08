@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Portfolio Websites for Photographers and Creatives — Amped Web Studios',
     description: 'We build portfolio websites for photographers, videographers, and creative professionals — beautiful, fast, and designed to win clients.',
     url: '/industries/creative-portfolio',
-    images: [{ url: '/og-images/industries-creative-portfolio.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-creative-portfolio.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Professional Service Websites That Establish Authority — Amped Web Studios',
     description: 'We build websites for law firms, CPAs, and consultants — designed to establish credibility, rank locally, and convert visitors into consultations.',
     url: '/industries/legal-professional',
-    images: [{ url: '/og-images/industries-legal-professional.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-legal-professional.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

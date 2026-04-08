@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Real Estate Websites That Capture More Leads — Amped Web Studios',
     description: 'We build personal brand websites for real estate agents and brokers — designed to generate buyer and seller leads and stand out from the competition.',
     url: '/industries/real-estate',
-    images: [{ url: '/og-images/industries-real-estate.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-real-estate.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

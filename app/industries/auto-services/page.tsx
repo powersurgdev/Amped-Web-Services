@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Auto Shop Websites Built to Bring in More Customers — Amped Web Studios',
     description: 'We build websites for auto mechanics, detailing shops, car washes, and towing companies — designed to capture local search traffic and convert it into customers.',
     url: '/industries/auto-services',
-    images: [{ url: '/og-images/industries-auto-services.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-auto-services.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {

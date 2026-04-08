@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     title: 'Gym and Fitness Websites That Convert Visitors to Members — Amped Web Studios',
     description: 'We build websites for gyms, personal trainers, yoga studios, and fitness businesses — designed to generate trial sign-ups and turn visitors into paying members.',
     url: '/industries/fitness-sports',
-    images: [{ url: '/og-images/industries-fitness-sports.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og-images/industries-fitness-sports.png'] },
+  twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
 
 const data: IndustryPageData = {
