@@ -4,6 +4,7 @@ import { ArrowUp, Facebook } from "lucide-react";
 import Link from 'next/link';
 import Image from "next/image";
 import logoSrc from "@assets/Amped-Web-Studios-Logo.webp";
+import { industries } from "@/lib/industries";
 
 const services = [
   { label: "Custom Website Design", href: "/services/web-design" },
@@ -13,21 +14,9 @@ const services = [
   { label: "Website Optimization", href: "/services/website-refresh" },
 ];
 
-const industries = [
-  { label: "Home Services", href: "/industries/home-services" },
-  { label: "Contractors & Trades", href: "/industries/contractors" },
-  { label: "Restaurants", href: "/industries/restaurants" },
-  { label: "Healthcare & Wellness", href: "/industries/healthcare" },
-  { label: "Real Estate", href: "/industries/real-estate" },
-  { label: "Beauty & Personal Care", href: "/industries/beauty-wellness" },
-  { label: "Auto Services", href: "/industries/auto-services" },
-  { label: "Creative Professionals", href: "/industries/creative-portfolio" },
-  { label: "Legal & Professional", href: "/industries/legal-professional" },
-  { label: "Fitness & Sports", href: "/industries/fitness-sports" },
-];
-
 const company = [
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Blog", href: "/blog" },
   { label: "Pricing", href: "/#pricing" },
   { label: "Contact", href: "/contact" },
 ];

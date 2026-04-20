@@ -16,6 +16,7 @@ import IndustryPageHero, {
   type IndustryPageHeroProps,
 } from "@/components/IndustryPageHero";
 import type { ReactNode } from "react";
+import { trackCtaClick } from "@/lib/analytics";
 
 // ─── Data Interfaces ──────────────────────────────────────────────────────────
 
@@ -386,7 +387,12 @@ function CTASection({
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">{ctaHeadline}</h2>
           <p className="text-lg text-muted-foreground mb-8">{ctaBody}</p>
           <Button asChild size="lg" className="text-base">
-            <Link href="/contact">Get a Free Quote</Link>
+            <Link
+              href="/contact"
+              onClick={() => trackCtaClick({ location: 'industry_detail_footer', label: 'Start Your Project', destination: '/contact' })}
+            >
+              Start Your Project
+            </Link>
           </Button>
           <p className="mt-4 text-sm text-muted-foreground/60">
             No contracts · Response within 1 business day
@@ -408,8 +414,14 @@ export default function IndustryPageTemplate({ data }: { data: IndustryPageData 
         {/* 1. Hero */}
         <IndustryPageHero
           {...heroProps}
-          onPrimaryClick={() => { window.location.href = "/contact"; }}
-          onSecondaryClick={heroProps.secondaryCTA ? () => { window.location.href = "/portfolio"; } : undefined}
+          onPrimaryClick={() => {
+            trackCtaClick({ location: 'industry_detail_hero', label: heroProps.primaryCTA ?? 'Start Your Project', destination: '/contact' });
+            window.location.href = "/contact";
+          }}
+          onSecondaryClick={heroProps.secondaryCTA ? () => {
+            trackCtaClick({ location: 'industry_detail_hero', label: heroProps.secondaryCTA ?? 'View Portfolio', destination: '/portfolio' });
+            window.location.href = "/portfolio";
+          } : undefined}
         />
 
         {/* 2. Responsive mockup showcase */}

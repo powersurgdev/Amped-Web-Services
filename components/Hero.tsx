@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Monitor, BarChart3, Server, Globe, Sparkles, Zap } from "lucide-react";
+import { trackCtaClick } from "@/lib/analytics";
 
 interface HeroProps {
   onNavigate?: (section: string) => void;
@@ -188,7 +189,10 @@ export default function Hero({ onNavigate = scrollToSection }: HeroProps) {
             >
               <Button
                 size="lg"
-                onClick={() => onNavigate("contact")}
+                onClick={() => {
+                  trackCtaClick({ location: 'hero', label: 'Start Your Project', destination: '#contact' });
+                  onNavigate("contact");
+                }}
                 data-testid="button-start-project"
                 className="text-base group relative overflow-visible w-full sm:w-auto"
               >
@@ -205,7 +209,10 @@ export default function Hero({ onNavigate = scrollToSection }: HeroProps) {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => onNavigate("portfolio")}
+                onClick={() => {
+                  trackCtaClick({ location: 'hero', label: 'View Portfolio', destination: '#portfolio' });
+                  onNavigate("portfolio");
+                }}
                 data-testid="button-view-portfolio"
                 className="text-base backdrop-blur-sm w-full sm:w-auto"
               >

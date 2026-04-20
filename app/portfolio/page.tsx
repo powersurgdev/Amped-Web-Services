@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Portfolio from '@/components/Portfolio';
+import TrackedCtaLink from '@/components/TrackedCtaLink';
 
 export const metadata: Metadata = {
   title: 'Portfolio — Amped Web Studios',
@@ -26,7 +27,7 @@ export default function PortfolioPage() {
             Every site we build is designed from scratch for one goal: make your phone ring and your inbox full. Here's a look at what we've launched for real local businesses.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-            <Button asChild size="lg"><Link href="/contact">Start Your Project</Link></Button>
+            <TrackedCtaLink href="/contact" location="portfolio_page_top" label="Start Your Project">Start Your Project</TrackedCtaLink>
             <Button asChild size="lg" variant="outline"><Link href="/services">See Our Services</Link></Button>
           </div>
         </div>
@@ -36,7 +37,7 @@ export default function PortfolioPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-bold">Ready to Build Something Like This for Your Business?</h2>
           <p className="text-lg text-muted-foreground">Tell us about your project. We'll come back with a custom plan and clear pricing — no fluff.</p>
-          <Button asChild size="lg" className="text-base"><Link href="/contact">Get a Free Quote</Link></Button>
+          <TrackedCtaLink href="/contact" location="portfolio_page_bottom" label="Start Your Project" className="text-base">Start Your Project</TrackedCtaLink>
         </div>
       </section>
     </main>

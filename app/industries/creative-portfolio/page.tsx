@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Portfolio Websites for Photographers and Creatives',
     highlightedPhrase: 'Photographers and Creatives',
     subheading: 'Your work is the product. Your website should present it with the same level of craft — clean, fast, and designed to make the right clients reach out.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'Fast', label: 'Image Loading' },
       { value: 'More', label: 'Qualified Inquiries' },

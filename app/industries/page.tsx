@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import TrackedCtaLink from '@/components/TrackedCtaLink';
 import {
   Wrench, HardHat, UtensilsCrossed, Heart, Home, Scissors,
   Car, Camera, Scale, Dumbbell, ArrowRight
@@ -42,7 +42,7 @@ export default function IndustriesHub() {
           <p className="text-lg sm:text-xl text-muted-foreground">
             Every industry has different customers, different trust signals, and different reasons people call or walk away. We build sites that speak to your specific customer — not a generic business audience.
           </p>
-          <Button asChild size="lg"><Link href="/contact">Get a Free Quote</Link></Button>
+          <TrackedCtaLink href="/contact" location="industries_page_top" label="Start Your Project">Start Your Project</TrackedCtaLink>
         </div>
       </section>
       <section className="pb-20 sm:pb-28">
@@ -73,7 +73,7 @@ export default function IndustriesHub() {
           <p className="text-lg text-muted-foreground">
             We work with all kinds of local businesses. If you're not on the list, reach out — we've probably built something like it before.
           </p>
-          <Button asChild size="lg" className="text-base"><Link href="/contact">Let's Talk</Link></Button>
+          <TrackedCtaLink href="/contact" location="industries_page_bottom" label="Let's Talk" className="text-base">Let's Talk</TrackedCtaLink>
         </div>
       </section>
     </main>

@@ -38,7 +38,7 @@ export default function WebDevelopmentPage() {
         highlightedPhrase: "Goes Live Fast",
         subheading:
           "We don't hand you a login and wish you luck. We build it, launch it, and make sure it works — from the domain all the way to go-live.",
-        primaryCTA: "Get a Free Quote",
+        primaryCTA: "Start Your Project",
         stats: [
           { value: "90+", label: "PageSpeed Score" },
           { value: "7–10", label: "Days to Launch" },
@@ -153,7 +153,7 @@ export default function WebDevelopmentPage() {
       ]}
       ctaHeadline="Let's Build Something Fast, Clean, and Ready to Launch"
       ctaSubtext="No hand-holding, no tech headaches. We handle the build, the launch, and everything in between."
-      ctaButtonText="Get a Free Quote"
+      ctaButtonText="Start Your Project"
       guaranteeText="If your site doesn't score 85+ on Google PageSpeed at launch, we keep working until it does. No shortcuts, no excuses — ever."
     />
   );

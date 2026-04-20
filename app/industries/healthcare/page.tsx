@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Healthcare Websites That Build Patient Trust',
     highlightedPhrase: 'Build Patient Trust',
     subheading: "Patients are trusting you with their health. Your website needs to reflect that level of care — professional, clear, and easy to navigate when someone is looking for help.",
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'HIPAA', label: 'Compliant Forms' },
       { value: 'Online', label: 'Appointment Booking' },

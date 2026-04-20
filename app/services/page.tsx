@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import TrackedCtaLink from '@/components/TrackedCtaLink';
 import { Palette, Code, Server, Search, TrendingUp, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function ServicesHub() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
           <h1 className="text-4xl sm:text-5xl font-bold">Everything You Need to Compete Online</h1>
           <p className="text-lg sm:text-xl text-muted-foreground">We handle the web so you can run the business. From the first design concept to ongoing growth — here's what we do.</p>
-          <Button asChild size="lg"><Link href="/contact">Get a Free Quote</Link></Button>
+          <TrackedCtaLink href="/contact" location="services_page_top" label="Start Your Project">Start Your Project</TrackedCtaLink>
         </div>
       </section>
       <section className="pb-20 sm:pb-28">
@@ -61,7 +61,7 @@ export default function ServicesHub() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-bold">Not Sure Which Service You Need?</h2>
           <p className="text-lg text-muted-foreground">Just tell us where you're at and what you're trying to achieve. We'll figure out the right fit together.</p>
-          <Button asChild size="lg" className="text-base"><Link href="/contact">Talk to Us</Link></Button>
+          <TrackedCtaLink href="/contact" location="services_page_bottom" label="Talk to Us" className="text-base">Talk to Us</TrackedCtaLink>
         </div>
       </section>
     </main>

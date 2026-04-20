@@ -38,7 +38,7 @@ export default function WebDesignPage() {
         highlightedPhrase: "Custom Website",
         subheading:
           "Your website is often the first thing a potential customer sees. We make sure it builds trust, reflects your brand, and turns visitors into leads — from day one.",
-        primaryCTA: "Get a Free Quote",
+        primaryCTA: "Start Your Project",
         stats: [
           { value: "100%", label: "Custom Built" },
           { value: "5–7", label: "Days to Design" },
@@ -153,7 +153,7 @@ export default function WebDesignPage() {
       ]}
       ctaHeadline="Ready to Finally Have a Website You're Proud Of?"
       ctaSubtext="Most businesses we work with wish they'd done this sooner. Let's build something that actually works for you."
-      ctaButtonText="Get a Free Quote"
+      ctaButtonText="Start Your Project"
       guaranteeText="We won't call the project done until you're genuinely happy with the result. If we can't get your design right, we keep working — no extra charge."
     />
   );

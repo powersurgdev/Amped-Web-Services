@@ -4,19 +4,38 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+import type { IndustryLabel } from "@/lib/industries";
+import { trackEvent } from "@/lib/analytics";
 import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.webp";
 import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.webp";
 import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
+import longsLandManagementImg from "@assets/generated_images/longs-land-management_portfolio.webp";
 
-const portfolioItems = [
+type PortfolioItem = {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  tag: IndustryLabel;
+  url: string;
+  featured?: boolean;
+};
+
+const portfolioItems: PortfolioItem[] = [
   {
     image: grandOaksImg,
     title: "Grand Oaks Tree Service",
     description: "Professional tree service website built to drive local calls and service requests",
-    tag: "Tree Service",
+    tag: "Contractors & Trades",
     url: "https://grandoakspropertymaintenance.com/",
   },
   {
@@ -25,18 +44,61 @@ const portfolioItems = [
     description: "Clean, conversion-focused site for a gutter installation and repair company",
     tag: "Home Services",
     url: "https://vanguardgutters.com/",
+    featured: true,
   },
   {
     image: vergaImg,
     title: "Verga Electric",
     description: "Professional electrician website designed to generate calls and service requests",
-    tag: "Electrical Services",
+    tag: "Contractors & Trades",
     url: "https://www.vergaelectric.com/",
+    featured: true,
+  },
+  {
+    image: longsLandManagementImg,
+    title: "Long's Land Management",
+    description: "Bold, high-impact site for a land clearing and site prep contractor built to attract residential and commercial jobs",
+    tag: "Contractors & Trades",
+    url: "https://longslandmanagement.com",
+    featured: true,
   },
 ];
 
-export default function Portfolio() {
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+type PortfolioMode = "grid" | "carousel";
+
+export default function Portfolio({ mode = "grid" }: { mode?: PortfolioMode }) {
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+
+  const items = mode === "carousel" ? portfolioItems.filter((i) => i.featured) : portfolioItems;
+
+  const renderCard = (item: PortfolioItem, index: number) => (
+    <Card
+      className="group cursor-pointer overflow-hidden hover-elevate transition-all duration-300 hover:shadow-xl h-full flex flex-col"
+      onClick={() => setSelectedItem(item)}
+      data-testid={`card-portfolio-${index}`}
+    >
+      <div className="relative aspect-[16/10] overflow-hidden flex-shrink-0">
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          priority={index === 0}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <div className="p-6 space-y-3 flex flex-col flex-1">
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
+          <Badge variant="secondary" className="flex-shrink-0 text-xs">
+            {item.tag}
+          </Badge>
+        </div>
+        <p className="text-muted-foreground text-sm flex-1">{item.description}</p>
+      </div>
+    </Card>
+  );
 
   return (
     <>
@@ -57,62 +119,62 @@ export default function Portfolio() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
-            {portfolioItems.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="h-full"
-              >
-                <Card
-                  className="group cursor-pointer overflow-hidden hover-elevate transition-all duration-300 hover:shadow-xl h-full flex flex-col"
-                  onClick={() => setSelectedItem(index)}
-                  data-testid={`card-portfolio-${index}`}
+          {mode === "carousel" ? (
+            <Carousel opts={{ align: "start", loop: items.length > 3 }} className="w-full">
+              <CarouselContent className="-ml-4 sm:-ml-6">
+                {items.map((item, index) => (
+                  <CarouselItem
+                    key={item.title}
+                    className="pl-4 sm:pl-6 basis-full md:basis-1/3"
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="h-full"
+                    >
+                      {renderCard(item, index)}
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-4 lg:-left-12" />
+              <CarouselNext className="hidden md:flex -right-4 lg:-right-12" />
+            </Carousel>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+              {items.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="h-full"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden flex-shrink-0">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      priority={index === 0}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <div className="p-6 space-y-3 flex flex-col flex-1">
-                    <div className="flex items-start justify-between gap-3 flex-wrap">
-                      <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
-                      <Badge variant="secondary" className="flex-shrink-0 text-xs">
-                        {item.tag}
-                      </Badge>
-                    </div>
-                    <p className="text-muted-foreground text-sm flex-1">{item.description}</p>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                  {renderCard(item, index)}
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       <Dialog open={selectedItem !== null} onOpenChange={() => setSelectedItem(null)}>
         <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] p-0">
           <DialogTitle className="sr-only">
-            {selectedItem !== null ? portfolioItems[selectedItem].title : "Portfolio item"}
+            {selectedItem ? selectedItem.title : "Portfolio item"}
           </DialogTitle>
           <DialogDescription className="sr-only">
-            {selectedItem !== null ? portfolioItems[selectedItem].description : "Website details"}
+            {selectedItem ? selectedItem.description : "Website details"}
           </DialogDescription>
-          {selectedItem !== null && (
+          {selectedItem && (
             <div className="space-y-6 p-6">
               <div className="rounded-md overflow-hidden bg-muted relative" style={{ height: '60vh' }}>
                 <Image
-                  src={portfolioItems[selectedItem].image}
-                  alt={portfolioItems[selectedItem].title}
+                  src={selectedItem.image}
+                  alt={selectedItem.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 800px"
                   className="object-contain"
@@ -120,21 +182,26 @@ export default function Portfolio() {
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <h3 className="text-2xl font-bold">{portfolioItems[selectedItem].title}</h3>
-                  <Badge variant="secondary">{portfolioItems[selectedItem].tag}</Badge>
+                  <h3 className="text-2xl font-bold">{selectedItem.title}</h3>
+                  <Badge variant="secondary">{selectedItem.tag}</Badge>
                 </div>
                 <p className="text-muted-foreground">
-                  {portfolioItems[selectedItem].description}
+                  {selectedItem.description}
                 </p>
                 <Button
                   asChild
                   className="w-full gap-2"
-                  data-testid={`button-visit-site-${selectedItem}`}
+                  data-testid="button-visit-site"
                 >
                   <a
-                    href={portfolioItems[selectedItem].url}
+                    href={selectedItem.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('portfolio_visit_site_click', {
+                      project: selectedItem.title,
+                      industry: selectedItem.tag,
+                      url: selectedItem.url,
+                    })}
                   >
                     <ExternalLink className="w-4 h-4" />
                     Visit Site

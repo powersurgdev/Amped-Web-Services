@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Real Estate Websites That Capture More Leads',
     highlightedPhrase: 'Capture More Leads',
     subheading: 'In real estate, your personal brand is everything. We build agent websites that make buyers and sellers choose you over every other agent in your market.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'Personal', label: 'Brand That Stands Out' },
       { value: 'Buyer', label: '& Seller Lead Forms' },

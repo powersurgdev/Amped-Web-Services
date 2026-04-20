@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import logoSrc from "@assets/Amped-Web-Studios-Logo.webp";
+import { industries as industriesDropdown } from "@/lib/industries";
+import { trackCtaClick } from "@/lib/analytics";
 
 const servicesDropdown = [
   { label: "Custom Website Design", href: "/services/web-design" },
@@ -16,24 +18,19 @@ const servicesDropdown = [
   { label: "Website Optimization", href: "/services/website-refresh" },
 ];
 
-const industriesDropdown = [
-  { label: "Home Services", href: "/industries/home-services" },
-  { label: "Contractors & Trades", href: "/industries/contractors" },
-  { label: "Restaurants", href: "/industries/restaurants" },
-  { label: "Healthcare & Wellness", href: "/industries/healthcare" },
-  { label: "Real Estate", href: "/industries/real-estate" },
-  { label: "Beauty & Personal Care", href: "/industries/beauty-wellness" },
-  { label: "Auto Services", href: "/industries/auto-services" },
-  { label: "Creative Professionals", href: "/industries/creative-portfolio" },
-  { label: "Legal & Professional", href: "/industries/legal-professional" },
-  { label: "Fitness & Sports", href: "/industries/fitness-sports" },
+const moreDropdown = [
+  { label: "Pricing", href: "/#pricing", isPricing: true },
+  { label: "Contact", href: "/contact" },
+  { label: "Blog", href: "/blog" },
 ];
+
+type DropdownKey = "services" | "industries" | "more";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"services" | "industries" | null>(null);
-  const [mobileExpanded, setMobileExpanded] = useState<"services" | "industries" | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<DropdownKey | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<DropdownKey | null>(null);
   const location = usePathname();
   const isHome = location === "/";
 
@@ -91,6 +88,11 @@ export default function Header() {
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1">
+              {/* Home link */}
+              <Link href="/" className={navLinkClass}>
+                Home
+              </Link>
+
               {/* Services dropdown */}
               <div
                 className="relative"
@@ -177,18 +179,61 @@ export default function Header() {
                 Portfolio
               </Link>
 
-              <button onClick={handlePricing} className={navLinkClass}>
-                Pricing
-              </button>
-
-              <Link href="/contact" className={navLinkClass}>
-                Contact
-              </Link>
+              {/* More dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("more")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button className={`${navLinkClass} flex items-center gap-1`}>
+                  More <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+                <AnimatePresence>
+                  {activeDropdown === "more" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 4 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full right-0 mt-1 w-48 bg-background/95 backdrop-blur-lg border border-border rounded-lg shadow-xl py-2 z-50"
+                    >
+                      {moreDropdown.map((item) =>
+                        item.isPricing ? (
+                          <button
+                            key={item.href}
+                            onClick={() => {
+                              setActiveDropdown(null);
+                              handlePricing();
+                            }}
+                            className="w-full text-left block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                          >
+                            {item.label}
+                          </button>
+                        ) : (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {item.label}
+                          </Link>
+                        )
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
             {/* Desktop CTA */}
             <Button asChild className="hidden md:inline-flex">
-              <Link href="/contact">Get Started Today!</Link>
+              <Link
+                href="/contact"
+                onClick={() => trackCtaClick({ location: 'header_desktop', label: 'Start Your Project', destination: '/contact' })}
+              >
+                Start Your Project
+              </Link>
             </Button>
 
             {/* Mobile hamburger */}
@@ -215,6 +260,14 @@ export default function Header() {
             className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg md:hidden overflow-y-auto max-h-[calc(100vh-4rem)]"
           >
             <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col">
+              <Link
+                href="/"
+                className="text-left py-4 text-base font-medium text-muted-foreground hover:text-foreground border-b border-border/50 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
+
               {/* Services accordion */}
               <div className="border-b border-border/50">
                 <button
@@ -319,25 +372,67 @@ export default function Header() {
                 Portfolio
               </Link>
 
-              <button
-                onClick={handlePricing}
-                className="text-left py-4 text-base font-medium text-muted-foreground hover:text-foreground border-b border-border/50 transition-colors"
-              >
-                Pricing
-              </button>
-
-              <Link
-                href="/contact"
-                className="text-left py-4 text-base font-medium text-muted-foreground hover:text-foreground border-b border-border/50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
+              {/* More accordion */}
+              <div className="border-b border-border/50">
+                <button
+                  onClick={() =>
+                    setMobileExpanded(mobileExpanded === "more" ? null : "more")
+                  }
+                  className="w-full text-left py-4 text-base font-medium text-muted-foreground hover:text-foreground flex items-center justify-between transition-colors"
+                >
+                  More
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      mobileExpanded === "more" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {mobileExpanded === "more" && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-3 pl-4 flex flex-col gap-1">
+                        <button
+                          onClick={handlePricing}
+                          className="text-left py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          Pricing
+                        </button>
+                        <Link
+                          href="/contact"
+                          className="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Contact
+                        </Link>
+                        <Link
+                          href="/blog"
+                          className="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Blog
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <div className="pt-5 pb-2">
                 <Button asChild size="lg" className="w-full text-base">
-                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                    Get a Free Quote
+                  <Link
+                    href="/contact"
+                    onClick={() => {
+                      trackCtaClick({ location: 'header_mobile', label: 'Start Your Project', destination: '/contact' });
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Start Your Project
                   </Link>
                 </Button>
               </div>

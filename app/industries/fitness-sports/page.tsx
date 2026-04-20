@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Gym and Fitness Websites That Convert Visitors to Members',
     highlightedPhrase: 'Convert Visitors to Members',
     subheading: 'People are ready to change. Your website just needs to give them the right push. We build fitness sites that turn curiosity into commitments.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'Trial', label: 'Sign-Up Lead Forms' },
       { value: 'Class', label: 'Schedule Integration' },

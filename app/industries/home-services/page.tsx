@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Websites for Home Service Companies That Generate Calls',
     highlightedPhrase: 'Generate Calls',
     subheading: 'HVAC, plumbing, electrical, gutters, tree service, landscaping — we build sites specifically for home service businesses that need their phone ringing.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     secondaryCTA: 'See Our Work',
     stats: [
       { value: '50+', label: 'Projects Delivered' },

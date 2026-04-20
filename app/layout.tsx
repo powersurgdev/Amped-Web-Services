@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
+import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,7 +18,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Amped Web Studios - Web Design, SEO & Digital Marketing',
   description: 'Amped Web Studios builds fast, modern websites with hosting included—so you can focus on running your business while your site does the selling.',
-  metadataBase: new URL('https://ampedwebstudios.com'),
+  metadataBase: new URL(SITE_URL),
   robots: { index: true, follow: true },
   icons: { icon: '/favicon.png' },
   openGraph: {

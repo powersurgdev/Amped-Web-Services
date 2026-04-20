@@ -38,7 +38,7 @@ export default function WebsiteRefreshPage() {
         highlightedPhrase: "Modernizes and Converts",
         subheading:
           "Your site might be live, but is it working? If it's slow, outdated, or not generating leads, a refresh can change that fast.",
-        primaryCTA: "Get a Free Site Review",
+        primaryCTA: "Start Your Project",
         stats: [
           { value: "3x", label: "Avg. Speed Gain" },
           { value: "0", label: "SEO Disruption" },
@@ -153,7 +153,7 @@ export default function WebsiteRefreshPage() {
       ]}
       ctaHeadline="Your Current Website Is Costing You More Than a Refresh Would"
       ctaSubtext="Every month with an outdated site is a month of lost leads. Let's fix that — fast."
-      ctaButtonText="Get a Free Site Review"
+      ctaButtonText="Start Your Project"
       guaranteeText="We preserve your existing URLs and rankings as part of every refresh. If we disrupt your SEO in the process, we fix it — on us."
     />
   );

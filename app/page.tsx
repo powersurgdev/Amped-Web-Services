@@ -9,6 +9,7 @@ import About from '@/components/About';
 import CTAStrip from '@/components/CTAStrip';
 import Contact from '@/components/Contact';
 import ScrollToHash from '@/components/ScrollToHash';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Amped Web Studios - Web Design, SEO & Digital Marketing',
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: 'Amped Web Studios',
-      url: 'https://ampedwebstudios.com',
+      url: SITE_URL,
       description: 'Amped Web Studios builds fast, modern websites with hosting included—so you can focus on running your business while your site does the selling.',
       serviceType: ['Web Design', 'Web Development', 'SEO', 'Digital Marketing', 'Website Hosting'],
       areaServed: 'United States',
@@ -47,7 +48,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <SocialProof />
-        <Portfolio />
+        <Portfolio mode="carousel" />
         <Pricing />
         <Services />
         <Process />

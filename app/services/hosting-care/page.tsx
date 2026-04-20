@@ -38,7 +38,7 @@ export default function HostingCarePage() {
         highlightedPhrase: "Zero Headaches",
         subheading:
           "Your website shouldn't require a tech degree to keep it running. We handle all of it — hosting, updates, backups, security — so you never have to think about it.",
-        primaryCTA: "See Hosting Plans",
+        primaryCTA: "Start Your Project",
         stats: [
           { value: "99.9%", label: "Uptime Guaranteed" },
           { value: "24/7", label: "Monitoring" },
@@ -153,7 +153,7 @@ export default function HostingCarePage() {
       ]}
       ctaHeadline="Set It and Actually Forget It"
       ctaSubtext="One flat monthly fee. We handle everything technical. You focus on running your business."
-      ctaButtonText="See Hosting Plans"
+      ctaButtonText="Start Your Project"
       guaranteeText="If your site goes down and we don't respond within 4 hours, that month is on us. We stand behind our uptime promise — no fine print."
     />
   );

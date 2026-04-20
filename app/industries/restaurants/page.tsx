@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Restaurant Website Design That Fills Your Tables',
     highlightedPhrase: 'Fills Your Tables',
     subheading: "People decide where to eat based on what they see online. We make sure your restaurant's website looks as good as your food tastes.",
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'Online', label: 'Menu Always Current' },
       { value: '1-tap', label: 'Reservation Booking' },

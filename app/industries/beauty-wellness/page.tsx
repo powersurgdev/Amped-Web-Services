@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Salon and Spa Websites That Book More Appointments',
     highlightedPhrase: 'Book More Appointments',
     subheading: 'New clients decide where to book based on what they see online. We build beauty and wellness sites that look as polished as your work — and make booking easy.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: '24/7', label: 'Online Booking' },
       { value: 'Gallery', label: 'Shows Your Best Work' },

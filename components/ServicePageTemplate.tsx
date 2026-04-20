@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 
 import Footer from "@/components/Footer";
 import ServicePageHero from "@/components/ServicePageHero";
+import { trackCtaClick } from "@/lib/analytics";
 import Image from "next/image";
 import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
 import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.webp";
@@ -146,10 +147,13 @@ export default function ServicePageTemplate({
   faqs,
   ctaHeadline,
   ctaSubtext,
-  ctaButtonText = "Get a Free Quote",
+  ctaButtonText = "Start Your Project",
   guaranteeText,
 }: ServicePageTemplateProps) {
-  const goToContact = () => { window.location.href = '/contact'; };
+  const goToContact = (location: string, label: string) => {
+    trackCtaClick({ location, label, destination: '/contact' });
+    window.location.href = '/contact';
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -161,8 +165,8 @@ export default function ServicePageTemplate({
       {/* 1 — Hero */}
       <ServicePageHero
         {...hero}
-        onPrimaryClick={goToContact}
-        onSecondaryClick={hero.secondaryCTA ? goToContact : undefined}
+        onPrimaryClick={() => goToContact('service_detail_hero', hero.primaryCTA)}
+        onSecondaryClick={hero.secondaryCTA ? () => goToContact('service_detail_hero', hero.secondaryCTA!) : undefined}
       />
 
       {/* 2 — Trust Bar */}
@@ -423,7 +427,7 @@ export default function ServicePageTemplate({
             <div className="space-y-5">
               <h2 className="text-3xl sm:text-4xl font-bold leading-tight">{ctaHeadline}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed">{ctaSubtext}</p>
-              <Button size="lg" onClick={goToContact} className="text-base">
+              <Button size="lg" onClick={() => goToContact('service_detail_footer', ctaButtonText)} className="text-base">
                 <span className="flex items-center gap-2">
                   {ctaButtonText}
                   <motion.span

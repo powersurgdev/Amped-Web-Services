@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Web Design for Contractors and Trade Businesses',
     highlightedPhrase: 'Trade Businesses',
     subheading: 'Your work speaks for itself — but only if homeowners can find you and trust you before they reach out. We build contractor sites that generate estimate requests.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     secondaryCTA: 'See Our Work',
     stats: [
       { value: 'Before', label: '/ After Galleries' },

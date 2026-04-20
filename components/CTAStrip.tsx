@@ -1,6 +1,7 @@
 'use client';
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { trackCtaClick } from "@/lib/analytics";
 
 interface CTAStripProps {
   onNavigate?: (section: string) => void;
@@ -29,11 +30,14 @@ export default function CTAStrip({ onNavigate = scrollToSection }: CTAStripProps
         </p>
         <Button
           size="lg"
-          onClick={() => onNavigate("contact")}
+          onClick={() => {
+            trackCtaClick({ location: 'cta_strip', label: 'Start Your Project', destination: '#contact' });
+            onNavigate("contact");
+          }}
           data-testid="button-cta-quote"
           className="text-base w-full sm:w-auto"
         >
-          Get a Free Quote
+          Start Your Project
         </Button>
       </motion.div>
     </section>

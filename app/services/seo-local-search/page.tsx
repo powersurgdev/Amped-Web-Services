@@ -38,7 +38,7 @@ export default function SeoLocalSearchPage() {
         highlightedPhrase: "Gets You Found",
         subheading:
           "When someone in your area searches for what you do, you should be the first result they see. We make that happen.",
-        primaryCTA: "Get a Free Quote",
+        primaryCTA: "Start Your Project",
         stats: [
           { value: "60–90", label: "Days to Results" },
           { value: "#1", label: "Goal: Map Pack" },
@@ -158,7 +158,7 @@ export default function SeoLocalSearchPage() {
       ]}
       ctaHeadline="Start Showing Up Where Your Customers Are Looking"
       ctaSubtext="Local SEO compounds over time. The sooner you start, the sooner you own the first page in your area."
-      ctaButtonText="Get a Free Quote"
+      ctaButtonText="Start Your Project"
       guaranteeText="We only use ethical, white-hat SEO practices. No shortcuts that can get your site penalized — ever. Sustainable rankings built to last."
     />
   );

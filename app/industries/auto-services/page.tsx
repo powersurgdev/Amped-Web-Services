@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Auto Shop Websites Built to Bring in More Customers',
     highlightedPhrase: 'Bring in More Customers',
     subheading: 'Auto service customers search on their phones when they have a problem. We build sites that show up fast, load fast, and make it easy to call or book.',
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'Mobile', label: 'First, Always' },
       { value: '1-tap', label: 'Click to Call' },

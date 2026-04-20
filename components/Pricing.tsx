@@ -17,6 +17,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackEvent, trackCtaClick } from "@/lib/analytics";
 
 interface PricingProps {
   onNavigate?: (section: string) => void;
@@ -27,13 +28,30 @@ function scrollToSection(id: string) {
   if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 64, behavior: 'smooth' });
 }
 
-const pricingPlans = [
+const pricingPlans: Array<{
+  id: 'launch' | 'visibility' | 'scale';
+  name: string;
+  hook: string;
+  oneTime: string;
+  monthly: string;
+  period: string;
+  description: string;
+  features: string[];
+  bestFor: string;
+  cta: string;
+  popular: boolean;
+  icon: typeof Rocket;
+  priceMonthly: number;
+  setupFee: number;
+}> = [
   {
     id: "launch",
     name: "Launch",
     hook: "Everything you need to put your business on the map.",
     oneTime: "$500",
     monthly: "$35",
+    priceMonthly: 35,
+    setupFee: 500,
     period: "/mo",
     description:
       "A complete, professional website covering all the core pages a local business needs — built clean, fast, and ready to be found.",
@@ -58,6 +76,8 @@ const pricingPlans = [
     hook: "Show up where your customers are already searching.",
     oneTime: "$1,000",
     monthly: "$250",
+    priceMonthly: 250,
+    setupFee: 1000,
     period: "/mo",
     description:
       "We answer the question your customers are asking: \"Do you service my area?\" Your site, your Google listing, and your service areas — all working together.",
@@ -81,6 +101,8 @@ const pricingPlans = [
     hook: "Own every search in every city you serve.",
     oneTime: "$1,500",
     monthly: "$500",
+    priceMonthly: 500,
+    setupFee: 1500,
     period: "/mo",
     description:
       "We go deep — building individual pages for every service in every city, plus SEO content that compounds over time.",
@@ -246,7 +268,14 @@ export default function Pricing({ onNavigate = scrollToSection }: PricingProps) 
                     <Button
                       className="w-full"
                       variant={plan.popular ? "default" : "outline"}
-                      onClick={() => onNavigate("contact")}
+                      onClick={() => {
+                        trackEvent('pricing_plan_click', {
+                          plan: plan.id,
+                          price_monthly: plan.priceMonthly,
+                          setup_fee: plan.setupFee,
+                        });
+                        onNavigate("contact");
+                      }}
                       data-testid={`button-pricing-cta-${plan.id}`}
                     >
                       {plan.cta}
@@ -363,7 +392,10 @@ export default function Pricing({ onNavigate = scrollToSection }: PricingProps) 
         >
           Not sure which plan fits?{" "}
           <button
-            onClick={() => onNavigate("contact")}
+            onClick={() => {
+              trackCtaClick({ location: 'pricing_footer', label: 'Get in touch', destination: '#contact' });
+              onNavigate("contact");
+            }}
             className="text-primary hover:underline"
             data-testid="link-custom-quote"
           >

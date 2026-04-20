@@ -23,7 +23,7 @@ const data: IndustryPageData = {
     headline: 'Professional Service Websites That Establish Authority',
     highlightedPhrase: 'Establish Authority',
     subheading: "When clients are searching for a lawyer, CPA, or consultant, they're looking for someone they can trust. We build sites that establish that trust immediately.",
-    primaryCTA: 'Get a Free Quote',
+    primaryCTA: 'Start Your Project',
     stats: [
       { value: 'More', label: 'Consultation Requests' },
       { value: 'Local', label: 'SEO Dominance' },
