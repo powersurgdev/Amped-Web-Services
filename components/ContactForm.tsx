@@ -38,7 +38,7 @@ export default function ContactForm() {
       name: "",
       email: "",
       company: "",
-      budget: "",
+      service: "",
       message: "",
     },
   });
@@ -56,7 +56,7 @@ export default function ContactForm() {
     onError: (error: Error) => {
       trackEvent('contact_form_error', {
         error_message: (error.message || 'unknown').slice(0, 100),
-        budget: form.getValues('budget') || null,
+        service: form.getValues('service') || null,
       });
       toast({
         title: "Submission failed",
@@ -78,9 +78,9 @@ export default function ContactForm() {
         className="bg-primary/10 border border-primary/20 rounded-lg p-8 text-center space-y-4"
       >
         <CheckCircle2 className="w-16 h-16 text-primary mx-auto" />
-        <h3 className="text-2xl font-bold">Thank you for reaching out!</h3>
+        <h3 className="text-2xl font-bold">Thanks — your free concept is on the way.</h3>
         <p className="text-muted-foreground">
-          I'll review your project details and get back to you within 24 hours.
+          I'll review your details and start designing your homepage concept. You'll hear back within 24 hours.
         </p>
       </motion.div>
     );
@@ -153,21 +153,21 @@ export default function ContactForm() {
 
           <FormField
             control={form.control}
-            name="budget"
+            name="service"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Project Budget *</FormLabel>
+                <FormLabel>What can we help you with? *</FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
-                    <SelectTrigger data-testid="select-budget">
-                      <SelectValue placeholder="Select a budget range" />
+                    <SelectTrigger data-testid="select-service">
+                      <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="under-1000">Under $1,000</SelectItem>
-                    <SelectItem value="1000-1500">$1,000 – $1,500</SelectItem>
-                    <SelectItem value="1500-2000">$1,500 – $2,000</SelectItem>
-                    <SelectItem value="2000-plus">$2,000+</SelectItem>
+                    <SelectItem value="new-site">I don't have a site — I want one built</SelectItem>
+                    <SelectItem value="redesign">I have a site — it needs a redesign</SelectItem>
+                    <SelectItem value="seo-local">I need SEO and local services</SelectItem>
+                    <SelectItem value="other">Something else</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -207,12 +207,12 @@ export default function ContactForm() {
                 Sending...
               </>
             ) : (
-              "Send My Project Details"
+              "Request My Free Concept"
             )}
           </Button>
 
           <p className="text-sm text-muted-foreground text-center">
-            No spam. No hard sales. Just an honest conversation about what you need.
+            No spam. No hard sales. Free homepage concept first — we only talk pricing if you love it.
           </p>
         </form>
       </Form>

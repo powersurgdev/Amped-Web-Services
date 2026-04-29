@@ -1,17 +1,25 @@
 import type { Metadata } from 'next';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Managed Website Hosting With Zero Headaches — Amped Web Studios',
   description: '99.9% uptime, 24/7 monitoring, automatic backups, and content updates handled for you. One flat monthly fee — no surprises.',
-  alternates: { canonical: '/services/hosting-care' },
+  alternates: { canonical: absoluteUrl('/services/hosting-care') },
   openGraph: {
     title: 'Managed Website Hosting With Zero Headaches — Amped Web Studios',
     description: '99.9% uptime, 24/7 monitoring, automatic backups, and content updates handled for you. One flat monthly fee — no surprises.',
-    url: '/services/hosting-care',
+    url: absoluteUrl('/services/hosting-care'),
     images: [{ url: '/og-images/hosting-care.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/hosting-care.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Managed Web Hosting & Care Plans',
+  description: '99.9% uptime, 24/7 monitoring, automatic backups, and content updates handled for you. One flat monthly fee — no surprises.',
+  url: '/services/hosting-care',
+  serviceType: 'Web Hosting',
+});
 
 import {
   Server,
@@ -26,10 +34,13 @@ import {
   Settings,
 } from "lucide-react";
 import ServicePageTemplate from "@/components/ServicePageTemplate";
+import JsonLd from "@/components/JsonLd";
 
 export default function HostingCarePage() {
   return (
-    <ServicePageTemplate
+    <>
+      <JsonLd data={schema} />
+      <ServicePageTemplate
       pageTitle="Managed Website Hosting With Zero Headaches — Amped Web Studios"
       pageDescription="99.9% uptime, 24/7 monitoring, automatic backups, and content updates handled for you. One flat monthly fee — no surprises."
       hero={{
@@ -155,6 +166,7 @@ export default function HostingCarePage() {
       ctaSubtext="One flat monthly fee. We handle everything technical. You focus on running your business."
       ctaButtonText="Start Your Project"
       guaranteeText="If your site goes down and we don't respond within 4 hours, that month is on us. We stand behind our uptime promise — no fine print."
-    />
+      />
+    </>
   );
 }

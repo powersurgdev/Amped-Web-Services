@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Amped Web Studios',
   description: 'Our privacy policy details how we collect, protect, and use information when you contact us about web design and digital services.',
-  alternates: { canonical: '/privacy' },
+  alternates: { canonical: absoluteUrl('/privacy') },
   openGraph: {
     title: 'Privacy Policy — Amped Web Studios',
-    url: '/privacy',
+    url: absoluteUrl('/privacy'),
     images: [{ url: '/og-images/privacy.png', width: 1200, height: 630 }],
   },
 };
@@ -33,7 +34,7 @@ export default function Privacy() {
         </Section>
         <Section title="Information We Collect">
           <p>When you submit our contact form, we collect:</p>
-          <ul><li>Your full name</li><li>Your email address</li><li>Your company or website name (if provided)</li><li>Your project budget range</li><li>Details about your project or inquiry</li></ul>
+          <ul><li>Your full name</li><li>Your email address</li><li>Your company or website name (if provided)</li><li>The service you're interested in</li><li>Details about your project or inquiry</li></ul>
           <p>We do not collect any payment information, and we do not use cookies or tracking scripts beyond what is necessary to operate the website.</p>
         </Section>
         <Section title="How We Use Your Information">

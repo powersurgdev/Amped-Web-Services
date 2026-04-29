@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { Scale, User, Award, FileText, DollarSign, Search } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Professional Service Websites That Establish Authority — Amped Web Studios',
   description: 'We build websites for law firms, CPAs, and consultants — designed to establish credibility, rank locally, and convert visitors into consultations.',
-  alternates: { canonical: '/industries/legal-professional' },
+  alternates: { canonical: absoluteUrl('/industries/legal-professional') },
   openGraph: {
     title: 'Professional Service Websites That Establish Authority — Amped Web Studios',
     description: 'We build websites for law firms, CPAs, and consultants — designed to establish credibility, rank locally, and convert visitors into consultations.',
-    url: '/industries/legal-professional',
+    url: absoluteUrl('/industries/legal-professional'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Legal and Professional Services',
+  description: 'We build websites for law firms, CPAs, and consultants — designed to establish credibility, rank locally, and convert visitors into consultations.',
+  url: '/industries/legal-professional',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Professional Service Websites That Establish Authority — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function LegalProfessionalPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

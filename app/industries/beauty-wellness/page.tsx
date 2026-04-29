@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { CalendarCheck, Sparkles, Users, Image, Gift, Star } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Salon and Spa Websites That Book More Appointments — Amped Web Studios',
   description: 'We build websites for salons, barbershops, spas, and beauty businesses — with online booking, service galleries, and a design that matches your brand.',
-  alternates: { canonical: '/industries/beauty-wellness' },
+  alternates: { canonical: absoluteUrl('/industries/beauty-wellness') },
   openGraph: {
     title: 'Salon and Spa Websites That Book More Appointments — Amped Web Studios',
     description: 'We build websites for salons, barbershops, spas, and beauty businesses — with online booking, service galleries, and a design that matches your brand.',
-    url: '/industries/beauty-wellness',
+    url: absoluteUrl('/industries/beauty-wellness'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Salons, Spas, and Beauty Businesses',
+  description: 'We build websites for salons, barbershops, spas, and beauty businesses — with online booking, service galleries, and a design that matches your brand.',
+  url: '/industries/beauty-wellness',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Salon and Spa Websites That Book More Appointments — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function BeautyWellnessPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

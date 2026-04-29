@@ -14,6 +14,7 @@ import BlogFAQBlock from "@/components/blog/BlogFAQBlock";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import BlogCTA from "@/components/blog/BlogCTA";
 import { SITE_URL as BASE } from "@/lib/site";
+import { absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -35,11 +36,11 @@ export async function generateMetadata({
     title: metaTitle,
     description: metaDescription,
     authors: [{ name: author }],
-    alternates: { canonical: `/blog/${slug}` },
+    alternates: { canonical: absoluteUrl(`/blog/${slug}`) },
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `/blog/${slug}`,
+      url: absoluteUrl(`/blog/${slug}`),
       type: "article",
       publishedTime: publishDate,
       modifiedTime: updatedDate ?? publishDate,

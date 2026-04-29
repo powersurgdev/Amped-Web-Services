@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     })();
 
     track('contact_form_submit', {
-      budget: result.data.budget ?? null,
+      service: result.data.service ?? null,
       has_company: Boolean(result.data.company?.trim()),
       message_length_bucket: messageLengthBucket(result.data.message?.length ?? 0),
       referrer_page: referrerPath,
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       name: result.data.name,
       email: result.data.email,
       company: result.data.company,
-      budget: result.data.budget,
+      service: result.data.service,
       message: result.data.message,
     }).catch((err) => {
       console.error('[emailService] Failed to send contact notification:', err);

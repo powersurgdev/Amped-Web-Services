@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Portfolio from '@/components/Portfolio';
 import TrackedCtaLink from '@/components/TrackedCtaLink';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Portfolio — Amped Web Studios',
   description: "See the websites we've built for local businesses — tree service, gutters, electrical, and more. Real work, real results.",
-  alternates: { canonical: '/portfolio' },
+  alternates: { canonical: absoluteUrl('/portfolio') },
   openGraph: {
     title: 'Portfolio — Amped Web Studios',
     description: "See the websites we've built for local businesses — tree service, gutters, electrical, and more. Real work, real results.",
-    url: '/portfolio',
+    url: absoluteUrl('/portfolio'),
     images: [{ url: '/og-images/portfolio.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/portfolio.png'] },
@@ -36,7 +37,7 @@ export default function PortfolioPage() {
       <section className="py-16 sm:py-24 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-bold">Ready to Build Something Like This for Your Business?</h2>
-          <p className="text-lg text-muted-foreground">Tell us about your project. We'll come back with a custom plan and clear pricing — no fluff.</p>
+          <p className="text-lg text-muted-foreground">Tell us about your project. We'll come back with a free homepage concept, then a custom plan that fits — no fluff.</p>
           <TrackedCtaLink href="/contact" location="portfolio_page_bottom" label="Start Your Project" className="text-base">Start Your Project</TrackedCtaLink>
         </div>
       </section>

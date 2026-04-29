@@ -6,15 +6,16 @@ import {
   Wrench, HardHat, UtensilsCrossed, Heart, Home, Scissors,
   Car, Camera, Scale, Dumbbell, ArrowRight
 } from 'lucide-react';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Industries We Serve — Amped Web Studios',
   description: 'We build websites for local businesses across dozens of industries. Find your industry and see what we can do for you.',
-  alternates: { canonical: '/industries' },
+  alternates: { canonical: absoluteUrl('/industries') },
   openGraph: {
     title: 'Industries We Serve — Amped Web Studios',
     description: 'We build websites for local businesses across dozens of industries. Find your industry and see what we can do for you.',
-    url: '/industries',
+    url: absoluteUrl('/industries'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },

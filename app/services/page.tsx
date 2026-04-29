@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import TrackedCtaLink from '@/components/TrackedCtaLink';
 import { Palette, Code, Server, Search, TrendingUp, ArrowRight } from 'lucide-react';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Services — Amped Web Studios',
   description: 'Custom websites, local SEO, Google presence setup, and more — see everything Amped Web Studios offers for small businesses.',
-  alternates: { canonical: '/services' },
+  alternates: { canonical: absoluteUrl('/services') },
   openGraph: {
     title: 'Services — Amped Web Studios',
     description: 'Custom websites, local SEO, Google presence setup, and more — see everything Amped Web Studios offers for small businesses.',
-    url: '/services',
+    url: absoluteUrl('/services'),
     images: [{ url: '/og-images/services.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/services.png'] },

@@ -10,6 +10,7 @@ import {
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import CategoryTabs from "@/components/blog/CategoryTabs";
 import { SITE_URL as BASE } from "@/lib/site";
+import { absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return CATEGORIES.map((category) => ({ category }));
@@ -29,11 +30,11 @@ export async function generateMetadata({
   return {
     title: `${label} Articles — Amped Web Studios Blog`,
     description,
-    alternates: { canonical: `/blog/category/${category}` },
+    alternates: { canonical: absoluteUrl(`/blog/category/${category}`) },
     openGraph: {
       title: `${label} — Amped Web Studios Blog`,
       description,
-      url: `/blog/category/${category}`,
+      url: absoluteUrl(`/blog/category/${category}`),
       type: "website",
     },
     twitter: { card: "summary_large_image" },

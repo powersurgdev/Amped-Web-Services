@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { UtensilsCrossed, CalendarCheck, MapPin, Image, ShoppingBag, Share2 } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Restaurant Website Design That Fills Your Tables — Amped Web Studios',
   description: 'We build websites for restaurants and food businesses with online menus, reservations, and a design that makes people hungry before they walk in.',
-  alternates: { canonical: '/industries/restaurants' },
+  alternates: { canonical: absoluteUrl('/industries/restaurants') },
   openGraph: {
     title: 'Restaurant Website Design That Fills Your Tables — Amped Web Studios',
     description: 'We build websites for restaurants and food businesses with online menus, reservations, and a design that makes people hungry before they walk in.',
-    url: '/industries/restaurants',
+    url: absoluteUrl('/industries/restaurants'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Restaurants and Food Businesses',
+  description: 'We build websites for restaurants and food businesses with online menus, reservations, and a design that makes people hungry before they walk in.',
+  url: '/industries/restaurants',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Restaurant Website Design That Fills Your Tables — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function RestaurantsPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

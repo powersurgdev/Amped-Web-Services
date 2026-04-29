@@ -43,7 +43,7 @@ export class DatabaseStorage implements IStorage {
         name: submission.name,
         email: submission.email,
         company: submission.company ?? null,
-        budget: submission.budget,
+        service: submission.service,
         message: submission.message,
       })
       .returning();

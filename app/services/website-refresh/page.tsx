@@ -1,17 +1,25 @@
 import type { Metadata } from 'next';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Website Redesign That Modernizes and Converts — Amped Web Studios',
   description: 'Is your site slow, outdated, or not generating leads? We rebuild it from the ground up — faster, modern, and conversion-focused.',
-  alternates: { canonical: '/services/website-refresh' },
+  alternates: { canonical: absoluteUrl('/services/website-refresh') },
   openGraph: {
     title: 'Website Redesign That Modernizes and Converts — Amped Web Studios',
     description: 'Is your site slow, outdated, or not generating leads? We rebuild it from the ground up — faster, modern, and conversion-focused.',
-    url: '/services/website-refresh',
+    url: absoluteUrl('/services/website-refresh'),
     images: [{ url: '/og-images/website-refresh.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/website-refresh.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Website Refresh & Optimization',
+  description: 'Is your site slow, outdated, or not generating leads? We rebuild it from the ground up — faster, modern, and conversion-focused.',
+  url: '/services/website-refresh',
+  serviceType: 'Website Optimization',
+});
 
 import {
   Palette,
@@ -26,10 +34,13 @@ import {
   Rocket,
 } from "lucide-react";
 import ServicePageTemplate from "@/components/ServicePageTemplate";
+import JsonLd from "@/components/JsonLd";
 
 export default function WebsiteRefreshPage() {
   return (
-    <ServicePageTemplate
+    <>
+      <JsonLd data={schema} />
+      <ServicePageTemplate
       pageTitle="Website Redesign That Modernizes and Converts — Amped Web Studios"
       pageDescription="Is your site slow, outdated, or not generating leads? We rebuild it from the ground up — faster, modern, and conversion-focused."
       hero={{
@@ -155,6 +166,7 @@ export default function WebsiteRefreshPage() {
       ctaSubtext="Every month with an outdated site is a month of lost leads. Let's fix that — fast."
       ctaButtonText="Start Your Project"
       guaranteeText="We preserve your existing URLs and rankings as part of every refresh. If we disrupt your SEO in the process, we fix it — on us."
-    />
+      />
+    </>
   );
 }

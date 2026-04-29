@@ -5,6 +5,11 @@ import { SITE_URL } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
 
+  // Stamp every static route with the build date so Google has a `lastmod`
+  // signal it can use to schedule re-crawls. We bump on every deploy on
+  // purpose while indexation recovers; revisit once indexation stabilizes.
+  const BUILD_DATE = new Date();
+
   const latestPostDate = posts.reduce<Date | undefined>((acc, p) => {
     const d = new Date(p.frontmatter.updatedDate ?? p.frontmatter.publishDate);
     return !acc || d > acc ? d : acc;
@@ -35,17 +40,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/industries/creative-portfolio", priority: 0.7, changeFrequency: "monthly" },
     { path: "/industries/legal-professional", priority: 0.7, changeFrequency: "monthly" },
     { path: "/industries/fitness-sports", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(({ path, priority, changeFrequency }) => ({
     url: `${SITE_URL}${path}`,
+    lastModified: BUILD_DATE,
     changeFrequency,
     priority,
   }));
 
   const blogIndexEntry: MetadataRoute.Sitemap[number] = {
     url: `${SITE_URL}/blog`,
-    lastModified: latestPostDate,
+    lastModified: latestPostDate ?? BUILD_DATE,
     changeFrequency: "weekly",
     priority: 0.8,
   };
@@ -59,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }, undefined);
     return {
       url: `${SITE_URL}/blog/category/${slug}`,
-      lastModified: latest,
+      lastModified: latest ?? BUILD_DATE,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     };

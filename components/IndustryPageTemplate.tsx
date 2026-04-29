@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
 import { Monitor, Tablet, Smartphone } from "lucide-react";
-import Pricing from "@/components/Pricing";
+import RiskFreeBuild from "@/components/RiskFreeBuild";
 import IndustryPageHero, {
   type IndustryPageHeroProps,
 } from "@/components/IndustryPageHero";
@@ -50,16 +50,6 @@ export interface IndustryPageData {
   faqs: FAQ[];
   ctaHeadline: string;
   ctaBody: string;
-}
-
-// ─── Internal Navigation Helper ───────────────────────────────────────────────
-
-function navigateSection(section: string) {
-  if (section === "contact") {
-    window.location.href = "/contact";
-  } else {
-    window.location.href = `/#${section}`;
-  }
 }
 
 // ─── Responsive Mockup Section ────────────────────────────────────────────────
@@ -438,8 +428,8 @@ export default function IndustryPageTemplate({ data }: { data: IndustryPageData 
         {/* 5. Features grid */}
         <FeaturesGrid features={data.features} industry={heroProps.industry} />
 
-        {/* 6. Pricing */}
-        <Pricing onNavigate={navigateSection} />
+        {/* 6. Risk-Free Build */}
+        <RiskFreeBuild />
 
         {/* 7. FAQ */}
         <FAQSection faqs={data.faqs} />

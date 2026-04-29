@@ -1,17 +1,25 @@
 import type { Metadata } from 'next';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Local SEO That Gets You Found on Google — Amped Web Studios',
   description: "Rank in Google's local Map Pack for your service area. On-page SEO, Google Business Profile optimization, and monthly reporting included.",
-  alternates: { canonical: '/services/seo-local-search' },
+  alternates: { canonical: absoluteUrl('/services/seo-local-search') },
   openGraph: {
     title: 'Local SEO That Gets You Found on Google — Amped Web Studios',
     description: "Rank in Google's local Map Pack for your service area. On-page SEO, Google Business Profile optimization, and monthly reporting included.",
-    url: '/services/seo-local-search',
+    url: absoluteUrl('/services/seo-local-search'),
     images: [{ url: '/og-images/seo-local-search.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/seo-local-search.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Local SEO & Search Optimization',
+  description: "Rank in Google's local Map Pack for your service area. On-page SEO, Google Business Profile optimization, and monthly reporting included.",
+  url: '/services/seo-local-search',
+  serviceType: 'Local SEO',
+});
 
 import {
   FileText,
@@ -26,10 +34,13 @@ import {
   Star,
 } from "lucide-react";
 import ServicePageTemplate from "@/components/ServicePageTemplate";
+import JsonLd from "@/components/JsonLd";
 
 export default function SeoLocalSearchPage() {
   return (
-    <ServicePageTemplate
+    <>
+      <JsonLd data={schema} />
+      <ServicePageTemplate
       pageTitle="Local SEO That Gets You Found on Google — Amped Web Studios"
       pageDescription="Rank in Google's local Map Pack for your service area. On-page SEO, Google Business Profile optimization, and monthly reporting included."
       hero={{
@@ -160,6 +171,7 @@ export default function SeoLocalSearchPage() {
       ctaSubtext="Local SEO compounds over time. The sooner you start, the sooner you own the first page in your area."
       ctaButtonText="Start Your Project"
       guaranteeText="We only use ethical, white-hat SEO practices. No shortcuts that can get your site penalized — ever. Sustainable rankings built to last."
-    />
+      />
+    </>
   );
 }

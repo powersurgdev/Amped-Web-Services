@@ -14,10 +14,10 @@ export default function Contact() {
           className="text-center mb-12 sm:mb-16 space-y-4"
         >
           <h2 className="text-3xl sm:text-4xl font-bold" data-testid="text-contact-title">
-            Start Your Project
+            Get Your Free Concept
           </h2>
           <p className="text-lg text-muted-foreground">
-            Fill out the form below and I'll get back to you with next steps, timeline, and honest answers to any questions.
+            Tell us a little about your business and we'll design your homepage concept — completely free, no commitment. You only pay if you love it.
           </p>
         </motion.div>
 

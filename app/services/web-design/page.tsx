@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Custom Website Design for Small Businesses — Amped Web Studios',
   description: 'We design custom websites built from scratch — no templates, no page builders. Mobile-first, conversion-focused, and ready in 5–7 days.',
-  alternates: { canonical: '/services/web-design' },
+  alternates: { canonical: absoluteUrl('/services/web-design') },
   openGraph: {
     title: 'Custom Website Design for Small Businesses — Amped Web Studios',
     description: 'We design custom websites built from scratch — no templates, no page builders. Mobile-first, conversion-focused, and ready in 5–7 days.',
-    url: '/services/web-design',
+    url: absoluteUrl('/services/web-design'),
     images: [{ url: '/og-images/web-design.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/web-design.png'] },
@@ -26,10 +27,20 @@ import {
   Rocket,
 } from "lucide-react";
 import ServicePageTemplate from "@/components/ServicePageTemplate";
+import JsonLd from "@/components/JsonLd";
 
 export default function WebDesignPage() {
   return (
-    <ServicePageTemplate
+    <>
+      <JsonLd
+        data={serviceSchema({
+          name: 'Custom Website Design',
+          description: 'We design custom websites built from scratch — no templates, no page builders. Mobile-first, conversion-focused, and ready in 5–7 days.',
+          url: '/services/web-design',
+          serviceType: 'Web Design',
+        })}
+      />
+      <ServicePageTemplate
       pageTitle="Custom Website Design for Small Businesses — Amped Web Studios"
       pageDescription="We design custom websites built from scratch — no templates, no page builders. Mobile-first, conversion-focused, and ready in 5–7 days."
       hero={{
@@ -155,6 +166,7 @@ export default function WebDesignPage() {
       ctaSubtext="Most businesses we work with wish they'd done this sooner. Let's build something that actually works for you."
       ctaButtonText="Start Your Project"
       guaranteeText="We won't call the project done until you're genuinely happy with the result. If we can't get your design right, we keep working — no extra charge."
-    />
+      />
+    </>
   );
 }

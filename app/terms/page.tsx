@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions — Amped Web Studios',
   description: 'Terms and conditions for working with Amped Web Studios on web design, development, and hosting services.',
-  alternates: { canonical: '/terms' },
+  alternates: { canonical: absoluteUrl('/terms') },
   openGraph: {
     title: 'Terms & Conditions — Amped Web Studios',
-    url: '/terms',
+    url: absoluteUrl('/terms'),
     images: [{ url: '/og-images/terms.png', width: 1200, height: 630 }],
   },
 };

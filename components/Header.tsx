@@ -19,7 +19,7 @@ const servicesDropdown = [
 ];
 
 const moreDropdown = [
-  { label: "Pricing", href: "/#pricing", isPricing: true },
+  { label: "How It Works", href: "/#risk-free-build", isPricing: true },
   { label: "Contact", href: "/contact" },
   { label: "Blog", href: "/blog" },
 ];
@@ -51,14 +51,14 @@ export default function Header() {
 
   const handlePricing = () => {
     if (isHome) {
-      const el = document.getElementById("pricing");
+      const el = document.getElementById("risk-free-build");
       if (el) {
         const offset = 64;
         const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top, behavior: "smooth" });
       }
     } else {
-      window.location.href = "/#pricing";
+      window.location.href = "/#risk-free-build";
     }
     setIsMenuOpen(false);
   };

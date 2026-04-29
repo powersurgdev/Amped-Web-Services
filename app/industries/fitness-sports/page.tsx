@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { Dumbbell, CalendarCheck, User, Trophy, FileText, Search } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Gym and Fitness Websites That Convert Visitors to Members — Amped Web Studios',
   description: 'We build websites for gyms, personal trainers, yoga studios, and fitness businesses — designed to generate trial sign-ups and turn visitors into paying members.',
-  alternates: { canonical: '/industries/fitness-sports' },
+  alternates: { canonical: absoluteUrl('/industries/fitness-sports') },
   openGraph: {
     title: 'Gym and Fitness Websites That Convert Visitors to Members — Amped Web Studios',
     description: 'We build websites for gyms, personal trainers, yoga studios, and fitness businesses — designed to generate trial sign-ups and turn visitors into paying members.',
-    url: '/industries/fitness-sports',
+    url: absoluteUrl('/industries/fitness-sports'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Gyms and Fitness Businesses',
+  description: 'We build websites for gyms, personal trainers, yoga studios, and fitness businesses — designed to generate trial sign-ups and turn visitors into paying members.',
+  url: '/industries/fitness-sports',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Gym and Fitness Websites That Convert Visitors to Members — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function FitnessSportsPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

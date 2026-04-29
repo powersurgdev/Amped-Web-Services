@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import Contact from '@/components/Contact';
+import { absoluteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Contact Us — Amped Web Studios',
-  description: "Ready to get started? Tell us about your project and we'll come back with a custom plan and transparent pricing — no pressure.",
-  alternates: { canonical: '/contact' },
+  description: "Ready to get started? Tell us about your project and we'll come back with a free homepage concept, then a custom plan that fits — no pressure.",
+  alternates: { canonical: absoluteUrl('/contact') },
   openGraph: {
     title: 'Contact Us — Amped Web Studios',
-    description: "Ready to get started? Tell us about your project and we'll come back with a custom plan and transparent pricing — no pressure.",
-    url: '/contact',
+    description: "Ready to get started? Tell us about your project and we'll come back with a free homepage concept, then a custom plan that fits — no pressure.",
+    url: absoluteUrl('/contact'),
     images: [{ url: '/og-images/contact.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/contact.png'] },

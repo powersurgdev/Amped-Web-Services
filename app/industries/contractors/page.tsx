@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { Camera, FileText, Shield, Search, Star, HardHat } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Web Design for Contractors and Trade Businesses — Amped Web Studios',
   description: 'We build websites for remodelers, painters, flooring contractors, and general contractors — designed to generate estimate requests and close more jobs.',
-  alternates: { canonical: '/industries/contractors' },
+  alternates: { canonical: absoluteUrl('/industries/contractors') },
   openGraph: {
     title: 'Web Design for Contractors and Trade Businesses — Amped Web Studios',
     description: 'We build websites for remodelers, painters, flooring contractors, and general contractors — designed to generate estimate requests and close more jobs.',
-    url: '/industries/contractors',
+    url: absoluteUrl('/industries/contractors'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Contractors and Trade Businesses',
+  description: 'We build websites for remodelers, painters, flooring contractors, and general contractors — designed to generate estimate requests and close more jobs.',
+  url: '/industries/contractors',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Web Design for Contractors and Trade Businesses — Amped Web Studios',
@@ -69,5 +78,10 @@ const data: IndustryPageData = {
 };
 
 export default function ContractorsPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

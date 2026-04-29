@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { SITE_URL as BASE } from "@/lib/site";
+import { absoluteUrl } from "@/lib/seo";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import CategoryTabs from "@/components/blog/CategoryTabs";
 
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
   title: "Blog — Web Design, SEO & Small Business Insights | Amped Web Studios",
   description:
     "Practical guides on web design, development, SEO, and running a better online presence for small businesses. Written by the team at Amped Web Studios.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: absoluteUrl("/blog") },
   openGraph: {
     title: "Blog — Amped Web Studios",
     description:
       "Practical guides on web design, development, SEO, and running a better online presence for small businesses.",
-    url: "/blog",
+    url: absoluteUrl("/blog"),
     type: "website",
   },
   twitter: { card: "summary_large_image" },

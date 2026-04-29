@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { UserCheck, FileText, Home, Map, Star, Target } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Real Estate Websites That Capture More Leads — Amped Web Studios',
   description: 'We build personal brand websites for real estate agents and brokers — designed to generate buyer and seller leads and stand out from the competition.',
-  alternates: { canonical: '/industries/real-estate' },
+  alternates: { canonical: absoluteUrl('/industries/real-estate') },
   openGraph: {
     title: 'Real Estate Websites That Capture More Leads — Amped Web Studios',
     description: 'We build personal brand websites for real estate agents and brokers — designed to generate buyer and seller leads and stand out from the competition.',
-    url: '/industries/real-estate',
+    url: absoluteUrl('/industries/real-estate'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Real Estate Professionals',
+  description: 'We build personal brand websites for real estate agents and brokers — designed to generate buyer and seller leads and stand out from the competition.',
+  url: '/industries/real-estate',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Real Estate Websites That Capture More Leads — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function RealEstatePage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { Phone, Search, CalendarCheck, MapPin, Star, Wrench } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Auto Shop Websites Built to Bring in More Customers — Amped Web Studios',
   description: 'We build websites for auto mechanics, detailing shops, car washes, and towing companies — designed to capture local search traffic and convert it into customers.',
-  alternates: { canonical: '/industries/auto-services' },
+  alternates: { canonical: absoluteUrl('/industries/auto-services') },
   openGraph: {
     title: 'Auto Shop Websites Built to Bring in More Customers — Amped Web Studios',
     description: 'We build websites for auto mechanics, detailing shops, car washes, and towing companies — designed to capture local search traffic and convert it into customers.',
-    url: '/industries/auto-services',
+    url: absoluteUrl('/industries/auto-services'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Auto Shops and Transportation Businesses',
+  description: 'We build websites for auto mechanics, detailing shops, car washes, and towing companies — designed to capture local search traffic and convert it into customers.',
+  url: '/industries/auto-services',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Auto Shop Websites Built to Bring in More Customers — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function AutoServicesPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

@@ -22,30 +22,30 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#39;');
 }
 
-function formatBudget(budget: string): string {
+function formatService(service: string): string {
   const map: Record<string, string> = {
-    'under-1000': 'Under $1,000',
-    '1000-1500': '$1,000 – $1,500',
-    '1500-2000': '$1,500 – $2,000',
-    '2000-plus': '$2,000+',
+    'new-site': "Doesn't have a site — wants one built",
+    'redesign': 'Has a site — needs a redesign',
+    'seo-local': 'Needs SEO and local services',
+    'other': 'Something else',
   };
-  return map[budget] ?? budget;
+  return map[service] ?? service;
 }
 
 function buildEmailHtml(params: {
   name: string;
   email: string;
   company?: string | null;
-  budget: string;
+  service: string;
   message: string;
   submittedAt: string;
 }): string {
-  const { name, email, company, budget, message, submittedAt } = params;
+  const { name, email, company, service, message, submittedAt } = params;
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safeCompany = company ? escapeHtml(company) : '—';
-  const safeBudget = escapeHtml(formatBudget(budget));
+  const safeService = escapeHtml(formatService(service));
   const safeMessage = escapeHtml(message);
 
   const row = (label: string, value: string) => `
@@ -120,7 +120,7 @@ function buildEmailHtml(params: {
                 ${row('Name', safeName)}
                 ${row('Email', safeEmail)}
                 ${row('Company', safeCompany)}
-                ${row('Budget', safeBudget)}
+                ${row('Service', safeService)}
                 ${row('Message', safeMessage)}
               </table>
             </td>
@@ -173,7 +173,7 @@ export async function sendContactNotification(params: {
   name: string;
   email: string;
   company?: string | null;
-  budget: string;
+  service: string;
   message: string;
 }): Promise<void> {
   const recipientEmail = process.env.NOTIFICATION_EMAIL;
@@ -203,7 +203,7 @@ export async function sendContactNotification(params: {
   const msg = {
     to: recipientEmail,
     from: fromEmail,
-    subject: `New Lead: ${params.name} — ${formatBudget(params.budget)}`,
+    subject: `New Lead: ${params.name} — ${formatService(params.service)}`,
     html,
     text: [
       `New contact form submission — Amped Web Studios`,
@@ -211,7 +211,7 @@ export async function sendContactNotification(params: {
       `Name: ${params.name}`,
       `Email: ${params.email}`,
       `Company: ${params.company || '—'}`,
-      `Budget: ${formatBudget(params.budget)}`,
+      `Service: ${formatService(params.service)}`,
       `Submitted: ${submittedAt}`,
       ``,
       `Message:`,

@@ -1,17 +1,25 @@
 import type { Metadata } from 'next';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Professional Web Development That Goes Live Fast — Amped Web Studios',
   description: 'Hand-coded websites built for speed and performance. Domain, DNS, and SSL handled for you. Live in 7–10 days with a 90+ PageSpeed score.',
-  alternates: { canonical: '/services/web-development' },
+  alternates: { canonical: absoluteUrl('/services/web-development') },
   openGraph: {
     title: 'Professional Web Development That Goes Live Fast — Amped Web Studios',
     description: 'Hand-coded websites built for speed and performance. Domain, DNS, and SSL handled for you. Live in 7–10 days with a 90+ PageSpeed score.',
-    url: '/services/web-development',
+    url: absoluteUrl('/services/web-development'),
     images: [{ url: '/og-images/web-development.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/web-development.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Development & Launch',
+  description: 'Hand-coded websites built for speed and performance. Domain, DNS, and SSL handled for you. Live in 7–10 days with a 90+ PageSpeed score.',
+  url: '/services/web-development',
+  serviceType: 'Web Development',
+});
 
 import {
   Code2,
@@ -26,10 +34,13 @@ import {
   Globe,
 } from "lucide-react";
 import ServicePageTemplate from "@/components/ServicePageTemplate";
+import JsonLd from "@/components/JsonLd";
 
 export default function WebDevelopmentPage() {
   return (
-    <ServicePageTemplate
+    <>
+      <JsonLd data={schema} />
+      <ServicePageTemplate
       pageTitle="Professional Web Development That Goes Live Fast — Amped Web Studios"
       pageDescription="Hand-coded websites built for speed and performance. Domain, DNS, and SSL handled for you. Live in 7–10 days with a 90+ PageSpeed score."
       hero={{
@@ -155,6 +166,7 @@ export default function WebDevelopmentPage() {
       ctaSubtext="No hand-holding, no tech headaches. We handle the build, the launch, and everything in between."
       ctaButtonText="Start Your Project"
       guaranteeText="If your site doesn't score 85+ on Google PageSpeed at launch, we keep working until it does. No shortcuts, no excuses — ever."
-    />
+      />
+    </>
   );
 }

@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { CalendarCheck, UserCheck, BookOpen, CreditCard, ShieldCheck, Star } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Healthcare Websites That Build Patient Trust — Amped Web Studios',
   description: 'We build websites for dentists, chiropractors, therapists, and med spas — designed to earn patient trust and fill your appointment book.',
-  alternates: { canonical: '/industries/healthcare' },
+  alternates: { canonical: absoluteUrl('/industries/healthcare') },
   openGraph: {
     title: 'Healthcare Websites That Build Patient Trust — Amped Web Studios',
     description: 'We build websites for dentists, chiropractors, therapists, and med spas — designed to earn patient trust and fill your appointment book.',
-    url: '/industries/healthcare',
+    url: absoluteUrl('/industries/healthcare'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Web Design for Healthcare and Wellness Practices',
+  description: 'We build websites for dentists, chiropractors, therapists, and med spas — designed to earn patient trust and fill your appointment book.',
+  url: '/industries/healthcare',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Healthcare Websites That Build Patient Trust — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function HealthcarePage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }

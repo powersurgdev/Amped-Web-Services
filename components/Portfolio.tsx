@@ -4,13 +4,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
@@ -21,6 +14,8 @@ import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.web
 import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
 import longsLandManagementImg from "@assets/generated_images/longs-land-management_portfolio.webp";
 
+import stillwellPsychiatryImg from "@assets/generated_images/stillwell-psychiatry_portfolio.webp";
+import blackrockPressureWashingImg from "@assets/generated_images/blackrock-pressure-washing_portfolio.webp";
 type PortfolioItem = {
   image: StaticImageData;
   title: string;
@@ -61,6 +56,20 @@ const portfolioItems: PortfolioItem[] = [
     tag: "Contractors & Trades",
     url: "https://longslandmanagement.com",
     featured: true,
+  },
+  {
+    image: stillwellPsychiatryImg,
+    title: "Stillwell Psychiatry",
+    description: "Calming, trust-focused telehealth psychiatry site designed to convert visitors into new patient consults",
+    tag: "Healthcare & Wellness",
+    url: "https://stillwellpsychiatry.com",
+  },
+  {
+    image: blackrockPressureWashingImg,
+    title: "Blackrock Pressure Washing",
+    description: "Bold, conversion-focused site for a Brooksville pressure washing company built to drive local cleaning jobs",
+    tag: "Home Services",
+    url: "https://blackrock-pressure-washing.vercel.app/",
   },
 ];
 
@@ -120,28 +129,36 @@ export default function Portfolio({ mode = "grid" }: { mode?: PortfolioMode }) {
           </motion.div>
 
           {mode === "carousel" ? (
-            <Carousel opts={{ align: "start", loop: items.length > 3 }} className="w-full">
-              <CarouselContent className="-ml-4 sm:-ml-6">
+            <>
+              <div className="grid grid-cols-1 gap-6 md:hidden">
                 {items.map((item, index) => (
-                  <CarouselItem
+                  <motion.div
                     key={item.title}
-                    className="pl-4 sm:pl-6 basis-full md:basis-1/3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="h-full"
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="h-full"
-                    >
-                      {renderCard(item, index)}
-                    </motion.div>
-                  </CarouselItem>
+                    {renderCard(item, index)}
+                  </motion.div>
                 ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-4 lg:-left-12" />
-              <CarouselNext className="hidden md:flex -right-4 lg:-right-12" />
-            </Carousel>
+              </div>
+              <div className="hidden md:grid grid-cols-3 gap-6">
+                {items.map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="h-full"
+                  >
+                    {renderCard(item, index)}
+                  </motion.div>
+                ))}
+              </div>
+            </>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
               {items.map((item, index) => (

@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
 import { Zap, Image, DollarSign, Mail, User, Search } from 'lucide-react';
 import IndustryPageTemplate, { type IndustryPageData } from '@/components/IndustryPageTemplate';
+import { absoluteUrl, serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Portfolio Websites for Photographers and Creatives — Amped Web Studios',
   description: 'We build portfolio websites for photographers, videographers, and creative professionals — beautiful, fast, and designed to win clients.',
-  alternates: { canonical: '/industries/creative-portfolio' },
+  alternates: { canonical: absoluteUrl('/industries/creative-portfolio') },
   openGraph: {
     title: 'Portfolio Websites for Photographers and Creatives — Amped Web Studios',
     description: 'We build portfolio websites for photographers, videographers, and creative professionals — beautiful, fast, and designed to win clients.',
-    url: '/industries/creative-portfolio',
+    url: absoluteUrl('/industries/creative-portfolio'),
     images: [{ url: '/og-images/industries.png', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: ['/og-images/industries.png'] },
 };
+
+const schema = serviceSchema({
+  name: 'Portfolio Web Design for Creative Professionals',
+  description: 'We build portfolio websites for photographers, videographers, and creative professionals — beautiful, fast, and designed to win clients.',
+  url: '/industries/creative-portfolio',
+  serviceType: 'Web Design',
+});
 
 const data: IndustryPageData = {
   pageTitle: 'Portfolio Websites for Photographers and Creatives — Amped Web Studios',
@@ -68,5 +77,10 @@ const data: IndustryPageData = {
 };
 
 export default function CreativePortfolioPage() {
-  return <IndustryPageTemplate data={data} />;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <IndustryPageTemplate data={data} />
+    </>
+  );
 }
