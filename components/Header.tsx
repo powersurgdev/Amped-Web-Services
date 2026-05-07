@@ -6,9 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from "next/image";
-import logoSrc from "@assets/Amped-Web-Studios-Logo.webp";
+import logoDarkSrc from "@assets/Amped-Web-Studios-Logo.webp";
+import logoLightSrc from "@assets/Amped-Web-Studios-Logo-Light.png";
 import { industries as industriesDropdown } from "@/lib/industries";
 import { trackCtaClick } from "@/lib/analytics";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const servicesDropdown = [
   { label: "Custom Website Design", href: "/services/web-design" },
@@ -83,7 +85,24 @@ export default function Header() {
               className="hover-elevate active-elevate-2 rounded-md transition-colors flex items-center"
               aria-label="Amped Web Studios — Home"
             >
-              <Image src={logoSrc} alt="Amped Web Studios" height={56} width={168} style={{ height: '3.5rem', width: 'auto' }} priority />
+              <Image
+                src={logoLightSrc}
+                alt="Amped Web Studios"
+                height={56}
+                width={168}
+                style={{ height: '3.5rem', width: 'auto' }}
+                className="block dark:hidden"
+                priority
+              />
+              <Image
+                src={logoDarkSrc}
+                alt="Amped Web Studios"
+                height={56}
+                width={168}
+                style={{ height: '3.5rem', width: 'auto' }}
+                className="hidden dark:block"
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}
@@ -226,15 +245,18 @@ export default function Header() {
               </div>
             </nav>
 
-            {/* Desktop CTA */}
-            <Button asChild className="hidden md:inline-flex">
-              <Link
-                href="/contact"
-                onClick={() => trackCtaClick({ location: 'header_desktop', label: 'Start Your Project', destination: '/contact' })}
-              >
-                Start Your Project
-              </Link>
-            </Button>
+            {/* Desktop theme toggle + CTA */}
+            <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
+              <Button asChild>
+                <Link
+                  href="/contact"
+                  onClick={() => trackCtaClick({ location: 'header_desktop', label: 'Start Your Project', destination: '/contact' })}
+                >
+                  Start Your Project
+                </Link>
+              </Button>
+            </div>
 
             {/* Mobile hamburger */}
             <button
@@ -423,7 +445,10 @@ export default function Header() {
                 </AnimatePresence>
               </div>
 
-              <div className="pt-5 pb-2">
+              <div className="pt-5 pb-2 space-y-4">
+                <div className="flex justify-center">
+                  <ThemeToggle />
+                </div>
                 <Button asChild size="lg" className="w-full text-base">
                   <Link
                     href="/contact"

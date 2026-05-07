@@ -101,7 +101,7 @@ export default function Hero({ onNavigate = scrollToSection }: HeroProps) {
       <div className="absolute inset-0 -z-20">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/10" />
         <motion.div
-          className="absolute top-1/4 -left-1/4 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full bg-primary/10 sm:bg-primary/20 blur-[60px] sm:blur-[100px] lg:blur-[120px]"
+          className="absolute top-1/4 -left-1/4 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full bg-primary/20 sm:bg-primary/30 dark:bg-primary/10 dark:sm:bg-primary/20 blur-[60px] sm:blur-[100px] lg:blur-[120px]"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -114,7 +114,7 @@ export default function Hero({ onNavigate = scrollToSection }: HeroProps) {
           }}
         />
         <motion.div
-          className="absolute bottom-0 right-0 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-chart-2/15 blur-[50px] sm:blur-[80px] lg:blur-[100px]"
+          className="absolute bottom-0 right-0 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-chart-2/30 dark:bg-chart-2/15 blur-[50px] sm:blur-[80px] lg:blur-[100px]"
           animate={{
             x: [0, -40, 0],
             y: [0, -40, 0],
