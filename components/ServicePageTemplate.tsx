@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 import ServicePageHero from "@/components/ServicePageHero";
 import { trackCtaClick } from "@/lib/analytics";
 import Image from "next/image";
-import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
+import vergaImg from "@assets/generated_images/verga-electric_portfolio.webp";
 import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.webp";
 import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.webp";
 
