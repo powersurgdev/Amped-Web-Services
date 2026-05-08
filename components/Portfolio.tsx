@@ -11,7 +11,7 @@ import type { IndustryLabel } from "@/lib/industries";
 import { trackEvent } from "@/lib/analytics";
 import grandOaksImg from "@assets/generated_images/grandoaks_portfolio.webp";
 import vanguardImg from "@assets/generated_images/vanguard_gutters_portfolio.webp";
-import vergaImg from "@assets/generated_images/verga_electric_portfolio.webp";
+import vergaImg from "@assets/generated_images/verga-electric_portfolio.webp";
 import longsLandManagementImg from "@assets/generated_images/longs-land-management_portfolio.webp";
 
 import stillwellPsychiatryImg from "@assets/generated_images/stillwell-psychiatry_portfolio.webp";
@@ -46,7 +46,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "Verga Electric",
     description: "Professional electrician website designed to generate calls and service requests",
     tag: "Contractors & Trades",
-    url: "https://www.vergaelectric.com/",
+    url: "https://verga-electric.vercel.app/",
     featured: true,
   },
   {
