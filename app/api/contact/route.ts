@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { track } from '@vercel/analytics/server';
-import { storage } from '@/lib/storage';
 import { insertContactSubmissionSchema } from '@/shared/schema';
 import { fromError } from 'zod-validation-error';
 import { sendContactNotification } from '@/lib/emailService';
@@ -21,8 +20,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: validationError.toString() }, { status: 400 });
     }
 
-    const submission = await storage.createContactSubmission(result.data);
-
     const referrerPath = (() => {
       const raw = request.headers.get('referer');
       if (!raw) return null;
@@ -42,19 +39,18 @@ export async function POST(request: Request) {
       console.error('[analytics] Failed to track contact_form_submit:', err);
     });
 
-    // Send email notification — non-blocking; a failed email never fails the request
-    sendContactNotification({
+    // Send the lead notification via SendGrid. This is the only side effect now,
+    // so it's awaited — if it fails, the request must fail so the user can retry.
+    await sendContactNotification({
       name: result.data.name,
       email: result.data.email,
       company: result.data.company,
       service: result.data.service,
       message: result.data.message,
-    }).catch((err) => {
-      console.error('[emailService] Failed to send contact notification:', err);
     });
 
     return NextResponse.json(
-      { message: "Thank you for your submission! I'll get back to you soon.", submission },
+      { message: "Thank you for your submission! I'll get back to you soon." },
       { status: 201 }
     );
   } catch (error) {
